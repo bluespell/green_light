@@ -1,4 +1,4 @@
-describe "Application 'green_semaphore'" do
+describe "Application 'green_light'" do
   before do
     @app = UIApplication.sharedApplication
   end
