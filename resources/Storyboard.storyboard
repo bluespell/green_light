@@ -16,46 +16,54 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvr-UB-EuS" userLabel="Submit Button">
-                                <rect key="frame" x="20" y="440" width="280" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0J-mx-Tnf" userLabel="Container View">
+                                <rect key="frame" x="0.0" y="184" width="320" height="136"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvr-UB-EuS" userLabel="Submit Button">
+                                        <rect key="frame" x="20" y="72" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Qi6-lC-yOo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login:" destination="Odp-pk-iHX" eventType="touchUpInside" id="xjD-b4-Sor"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Type your token here" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xjx-Bl-1aM" userLabel="Token Field">
+                                        <rect key="frame" x="20" y="20" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="9GA-wh-V5b"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="VMC-j5-d8o"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tvr-UB-EuS" secondAttribute="bottom" constant="20" symbolic="YES" id="Pnw-Ku-LmM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xjx-Bl-1aM" secondAttribute="trailing" constant="20" symbolic="YES" id="ZKi-nV-LzX"/>
+                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="trailing" secondItem="Xjx-Bl-1aM" secondAttribute="trailing" id="aWT-tL-poc"/>
+                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="top" secondItem="Xjx-Bl-1aM" secondAttribute="bottom" constant="8" symbolic="YES" id="drF-qI-OSV"/>
+                                    <constraint firstItem="Xjx-Bl-1aM" firstAttribute="leading" secondItem="d0J-mx-Tnf" secondAttribute="leading" constant="20" symbolic="YES" id="gpZ-Js-4fg"/>
+                                    <constraint firstItem="Xjx-Bl-1aM" firstAttribute="top" secondItem="d0J-mx-Tnf" secondAttribute="top" constant="20" symbolic="YES" id="grf-sV-Iaf"/>
+                                    <constraint firstAttribute="width" constant="320" id="n6P-js-JTu"/>
+                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="leading" secondItem="Xjx-Bl-1aM" secondAttribute="leading" id="n8Q-Ao-MNS"/>
                                 </constraints>
-                                <state key="normal" title="Submit">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="Odp-pk-iHX" eventType="touchUpInside" id="xjD-b4-Sor"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xjx-Bl-1aM" userLabel="Token Field">
-                                <rect key="frame" x="20" y="237" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="... type the token:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2i-jR-BWU" userLabel="Label">
-                                <rect key="frame" x="166" y="208" width="134" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="L2i-jR-BWU" secondAttribute="trailing" constant="20" symbolic="YES" id="0Hw-bM-QlQ"/>
-                            <constraint firstItem="Xjx-Bl-1aM" firstAttribute="leading" secondItem="DGb-V5-jjf" secondAttribute="leading" constant="20" symbolic="YES" id="AWT-tQ-Pvg"/>
-                            <constraint firstItem="Xjx-Bl-1aM" firstAttribute="trailing" secondItem="L2i-jR-BWU" secondAttribute="trailing" id="Li9-WX-3zG"/>
-                            <constraint firstItem="Xjx-Bl-1aM" firstAttribute="top" secondItem="L2i-jR-BWU" secondAttribute="bottom" constant="8" symbolic="YES" id="MRD-x6-heU"/>
-                            <constraint firstItem="Xjx-Bl-1aM" firstAttribute="trailing" secondItem="Tvr-UB-EuS" secondAttribute="trailing" id="fB8-VU-rKz"/>
-                            <constraint firstItem="Tvr-UB-EuS" firstAttribute="leading" secondItem="Xjx-Bl-1aM" secondAttribute="leading" id="gDf-jo-24I"/>
-                            <constraint firstAttribute="bottom" secondItem="Tvr-UB-EuS" secondAttribute="bottom" constant="20" symbolic="YES" id="lEF-e9-VY4"/>
-                            <constraint firstItem="Xjx-Bl-1aM" firstAttribute="centerY" secondItem="DGb-V5-jjf" secondAttribute="centerY" id="nd7-5A-ybH"/>
+                            <constraint firstAttribute="centerY" secondItem="d0J-mx-Tnf" secondAttribute="centerY" id="gFe-u9-0Cv"/>
+                            <constraint firstAttribute="centerX" secondItem="d0J-mx-Tnf" secondAttribute="centerX" id="taY-wC-CLi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="iPH-jd-rUL"/>
@@ -66,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46T-yo-UfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="45"/>
+            <point key="canvasLocation" x="622" y="45"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qLF-TO-HjQ">
@@ -117,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSz-pm-fCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="45"/>
+            <point key="canvasLocation" x="1095" y="45"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>

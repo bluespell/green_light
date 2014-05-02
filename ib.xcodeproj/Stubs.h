@@ -17,6 +17,8 @@
 @property IBOutlet UITextField * token_field;
 
 -(IBAction) viewDidLoad;
+-(IBAction) textFieldDidBeginEditing:(id) textField;
+-(IBAction) textFieldDidEndEditing:(id) textField;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) login:(id) sender;
 
