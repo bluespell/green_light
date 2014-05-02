@@ -34,8 +34,6 @@ GEM
       tilt (~> 1.4.1)
       xcodeproj (~> 0.16.0)
     json_pure (1.8.1)
-    motion-blitz (1.0.2)
-      motion-cocoapods (>= 1.4.0)
     motion-cocoapods (1.4.1)
       cocoapods (>= 0.32.1)
     motion-devices (0.0.2)
@@ -54,7 +52,7 @@ PLATFORMS
 
 DEPENDENCIES
   bubble-wrap (~> 1.4.0)
-  ib
-  motion-blitz
-  motion-devices
-  rake
+  ib (~> 0.4.7)
+  motion-cocoapods (~> 1.4.1)
+  motion-devices (~> 0.0.2)
+  rake (~> 10.3.1)

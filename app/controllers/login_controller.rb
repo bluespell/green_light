@@ -18,13 +18,12 @@ class LoginController < UIViewController
 
     # TODO check if token isn't nil
     # TODO verificar o json retornado
+    # TODO change svprogresshud background
+    SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
 
-    Motion::Blitz.show
     Semaphore.login(token_field.text) do |response|
       #puts response.body.to_str
-      Motion::Blitz.dismiss
+      SVProgressHUD.dismiss
     end
-    return false
   end
-
 end
