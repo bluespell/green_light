@@ -19,6 +19,8 @@ class LoginController < UIViewController
     # TODO check if token isn't nil
     # TODO verificar o json retornado
     # TODO change svprogresshud background
+    # TODO caga tudo quando eh emoji (bloquear emoji?)
+    # TODO subir tela quando digita o token
     SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
 
     Semaphore.login(token_field.text) do |response|
