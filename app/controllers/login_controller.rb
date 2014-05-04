@@ -38,25 +38,36 @@ class LoginController < UIViewController
 
   # Call Semaphore passing in the token
   def login(sender)
-
     SVProgressHUD.appearance.setHudBackgroundColor("F2F2E9".to_color)
+    #SVProgressHUD.appearance.setHudBackgroundColor("4A4A4A".to_color)
+    #SVProgressHUD.appearance.setHudForegroundColor("F2F2E9".to_color)
     SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
 
     Semaphore.login(token_field.text) do |response|
       #puts response.body.to_str
 
-      # Only uncomment the SEGUE on line 53 if:
-
       # TODO the token is NOT nil
       # TODO the JSON returned is OK (has projects or something)
 
-      # performSegueWithIdentifier("push_projects", sender: sender)
-
-      # For future reference (how to pass data from a controller to another, like a parsed JSON, for example)
-      # "The prepareForSegue method is called just before a segue is performed and allows you to pass variables to the
-      # new view controller that is the segue’s destination"
+      performSegueWithIdentifier("push_projects", sender: sender)
 
       SVProgressHUD.dismiss
     end
   end
+
+  # TODO hardcoding for testing purposes for now. Pass in real data later
+
+  # The prepareForSegue method is called just before a segue is performed.
+  # It allows passing data to the new view controller that is the segue’s destination.
+  def prepareForSegue(segue, sender: sender)
+    segue.destinationViewController.projects = [
+        Project.new("almoxarifado", "passed"),
+        Project.new("compras", "passed"),
+        Project.new("unico", "failed"),
+        Project.new("folha", "building"),
+        Project.new("frotas", "passed"),
+        Project.new("matias_viado", "failed")
+    ]
+  end
+
 end

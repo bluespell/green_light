@@ -69,7 +69,7 @@
                     <navigationItem key="navigationItem" title="Login" id="iPH-jd-rUL"/>
                     <connections>
                         <outlet property="token_field" destination="Xjx-Bl-1aM" id="xEV-0y-8gS"/>
-                        <segue destination="tXQ-Vm-7oh" kind="push" identifier="push_projects" id="HZG-Hu-R7m"/>
+                        <segue destination="SeU-lA-bqW" kind="push" identifier="push_projects" id="eLO-FI-99P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46T-yo-UfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -81,6 +81,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="OTu-fX-NSH" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="GmA-Sq-b5b">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -99,33 +100,42 @@
             <point key="canvasLocation" x="144" y="45"/>
         </scene>
         <!--Projects Controller - Projects-->
-        <scene sceneID="8Sw-yf-2R8">
+        <scene sceneID="uFz-cf-dE1">
             <objects>
-                <viewController id="tXQ-Vm-7oh" customClass="ProjectsController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Bpu-5J-qJw"/>
-                        <viewControllerLayoutGuide type="bottom" id="nmS-lS-ZiS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XrQ-MC-b9r" userLabel="Projects View">
+                <tableViewController id="SeU-lA-bqW" customClass="ProjectsController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4ii-jc-EGE">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Projects" id="LbI-FM-OWx">
-                        <barButtonItem key="leftBarButtonItem" title="Login" style="plain" id="eCE-jL-Y0a">
+                        <color key="sectionIndexColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="cie-8k-3oz">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cie-8k-3oz" id="Go8-0L-Efd">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="SeU-lA-bqW" id="OMk-7o-Y5h"/>
+                            <outlet property="delegate" destination="SeU-lA-bqW" id="XtU-QI-Xcq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Projects" id="Ln1-iH-dUO">
+                        <barButtonItem key="leftBarButtonItem" title="Login" id="wM0-9J-yAj">
                             <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
-                                <action selector="back:" destination="tXQ-Vm-7oh" id="5m4-ze-h8f"/>
+                                <action selector="back:" destination="SeU-lA-bqW" id="4jo-AC-wzh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="back_button" destination="eCE-jL-Y0a" id="chF-qT-3XX"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QSz-pm-fCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B84-sQ-0xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095" y="45"/>
+            <point key="canvasLocation" x="1097" y="45"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>

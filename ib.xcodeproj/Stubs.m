@@ -15,3 +15,6 @@
 @implementation ProjectsController
 @end
 
+@implementation Project
+@end
+

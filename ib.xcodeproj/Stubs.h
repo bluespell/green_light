@@ -24,11 +24,12 @@
 
 @end
 
-@interface ProjectsController: UIViewController
-
-@property IBOutlet UIBarButtonItem * back_button;
-
+@interface ProjectsController: UITableViewController
+-(IBAction) viewDidLoad;
 -(IBAction) back:(id) sender;
 
+@end
+
+@interface Project: NSObject
 @end
 
