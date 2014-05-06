@@ -1,3 +1,4 @@
+# TODO how specing works on rubymotion?
 describe "Application 'green_light'" do
   before do
     @app = UIApplication.sharedApplication
