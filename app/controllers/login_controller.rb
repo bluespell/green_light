@@ -1,6 +1,8 @@
 class LoginController < UIViewController
   extend IB
 
+  attr_reader :projects
+
   # Outlets
   outlet :token_field, UITextField
 
@@ -23,20 +25,28 @@ class LoginController < UIViewController
     textField.resignFirstResponder
   end
 
-  # Call Semaphore passing in the token
   def login(sender)
+    if token_field.text.empty?
+      App.alert("Your token can't be empty")
+      return
+    end
+
+    @projects = []
+    token_field.resignFirstResponder
     SVProgressHUD.appearance.setHudBackgroundColor("F2F2E9".to_color)
     SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
 
     Semaphore.login(token_field.text) do |response|
-      #puts response.body.to_str
+      if response.success?
+        response.object.each do |project|
+          @projects << Project.new(project["name"], project["id"], project["hash_id"])
+        end
 
-      # TODO the token is NOT nil
-      # TODO the JSON returned is OK (has projects or something)
-
-      performSegueWithIdentifier("push_projects", sender: sender)
-
-      SVProgressHUD.dismiss
+        SVProgressHUD.showSuccessWithStatus "Success"
+        performSegueWithIdentifier("push_projects", sender: sender)
+      elsif response.failure?
+        SVProgressHUD.showErrorWithStatus "Error"
+      end
     end
   end
 
@@ -45,14 +55,7 @@ class LoginController < UIViewController
   # The prepareForSegue method is called just before a segue is performed.
   # It allows passing data to the new view controller that is the segue’s destination.
   def prepareForSegue(segue, sender: sender)
-    segue.destinationViewController.projects = [
-        Project.new("almoxarifado", "passed"),
-        Project.new("compras", "passed"),
-        Project.new("unico", "failed"),
-        Project.new("folha", "building"),
-        Project.new("frotas", "passed"),
-        Project.new("matias_viado", "failed")
-    ]
+    segue.destinationViewController.projects = @projects
   end
 
   private

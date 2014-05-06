@@ -24,8 +24,7 @@ class ProjectsController < UITableViewController
   end
 
   # Pops the current view and gets back to the previous one (LoginController)
-  def back sender
+  def back(sender)
     self.navigationController.popViewControllerAnimated(true)
   end
-
 end
