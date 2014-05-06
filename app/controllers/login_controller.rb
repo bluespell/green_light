@@ -10,25 +10,12 @@ class LoginController < UIViewController
 
   def textFieldDidBeginEditing(textField)
     # Screen goes up when the keyboard appears
-    animateTextField(textField, true)
+    animate_text_field textField, :direction => :up
   end
 
   def textFieldDidEndEditing(textField)
     # Screen goes down when the keyboard disappears
-    animateTextField(textField, false)
-  end
-
-  # Slides the screen up or down
-  def animateTextField(textField, up)
-    movementDistance = 80 # Tweak as needed
-    movementDuration = 0.3 # Tweak as needed
-    movement = (up ? - movementDistance : movementDistance)
-
-    UIView.beginAnimations("anim", context: nil)
-    UIView.animationBeginsFromCurrentState = true
-    UIView.animationDuration = movementDuration
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
-    UIView.commitAnimations
+    animate_text_field textField, :direction => :down
   end
 
   def textFieldShouldReturn(textField)
@@ -39,8 +26,6 @@ class LoginController < UIViewController
   # Call Semaphore passing in the token
   def login(sender)
     SVProgressHUD.appearance.setHudBackgroundColor("F2F2E9".to_color)
-    #SVProgressHUD.appearance.setHudBackgroundColor("4A4A4A".to_color)
-    #SVProgressHUD.appearance.setHudForegroundColor("F2F2E9".to_color)
     SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
 
     Semaphore.login(token_field.text) do |response|
@@ -70,4 +55,19 @@ class LoginController < UIViewController
     ]
   end
 
+  private
+
+  def animate_text_field(text_field, opts={})
+    distance  = opts.fetch :distance, 80
+    duration  = opts.fetch :duration, 0.3
+    direction = opts.fetch :direction, :up
+
+    distance *= (direction == :up ? -1 : 1)
+
+    UIView.beginAnimations("anim", context: nil)
+    UIView.animationBeginsFromCurrentState = true
+    UIView.animationDuration = duration
+    self.view.frame = CGRectOffset(self.view.frame, 0, distance)
+    UIView.commitAnimations
+  end
 end
