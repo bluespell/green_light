@@ -3,8 +3,11 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
+#import <Security/Security.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <UIKit/UIKit.h>
 
 @interface Semaphore: NSObject
 @end
@@ -12,7 +15,13 @@
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 @end
 
-@interface LoginController: UIViewController
+@interface ProjectsController: UITableViewController
+-(IBAction) viewDidLoad;
+-(IBAction) back:(id) sender;
+
+@end
+
+@interface TokenController: UIViewController
 
 @property IBOutlet UITextField * token_field;
 
@@ -24,12 +33,15 @@
 
 @end
 
-@interface ProjectsController: UITableViewController
--(IBAction) viewDidLoad;
--(IBAction) back:(id) sender;
+@interface Preferences: NSObject
+-(IBAction) decode:(id) key;
+-(IBAction) read:(id) key;
+-(IBAction) delete:(id) key;
 
 @end
 
 @interface Project: NSObject
+-(IBAction) color_status;
+
 @end
 

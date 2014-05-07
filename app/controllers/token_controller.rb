@@ -1,4 +1,4 @@
-class LoginController < UIViewController
+class TokenController < UIViewController
   extend IB
 
   attr_reader :projects

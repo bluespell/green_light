@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Login Controller - Login-->
+        <!--Token Controller - Token-->
         <scene sceneID="xJA-4u-ECN">
             <objects>
-                <viewController id="Odp-pk-iHX" customClass="LoginController" sceneMemberID="viewController">
+                <viewController id="Odp-pk-iHX" customClass="TokenController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cxE-dy-LvT"/>
                         <viewControllerLayoutGuide type="bottom" id="AxG-WH-XqU"/>
@@ -66,7 +66,7 @@
                             <constraint firstAttribute="centerX" secondItem="d0J-mx-Tnf" secondAttribute="centerX" id="taY-wC-CLi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Login" id="iPH-jd-rUL"/>
+                    <navigationItem key="navigationItem" title="Token" id="iPH-jd-rUL"/>
                     <connections>
                         <outlet property="token_field" destination="Xjx-Bl-1aM" id="xEV-0y-8gS"/>
                         <segue destination="SeU-lA-bqW" kind="push" identifier="push_projects" id="eLO-FI-99P"/>
@@ -125,7 +125,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Projects" id="Ln1-iH-dUO">
-                        <barButtonItem key="leftBarButtonItem" title="Login" id="wM0-9J-yAj">
+                        <barButtonItem key="leftBarButtonItem" title="Token" id="wM0-9J-yAj">
                             <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="back:" destination="SeU-lA-bqW" id="4jo-AC-wzh"/>

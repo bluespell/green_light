@@ -19,12 +19,9 @@ class ProjectsController < UITableViewController
     @reuseIdentifier ||= "CELL_IDENTIFIER"
 
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier)
-    cell ||= UITableViewCell.alloc.initWithStyle(
-        UITableViewCellStyleDefault,
-        reuseIdentifier:@reuseIdentifier
-    )
+    cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
 
-    cell.backgroundColor = UIColor.clearColor # This is actually transparent
+    cell.setBackgroundColor(UIColor.clearColor) # This is actually transparent
     cell.textLabel.text = @projects[indexPath.row].name
     cell
   end

@@ -9,10 +9,13 @@
 @implementation AppDelegate
 @end
 
-@implementation LoginController
+@implementation ProjectsController
 @end
 
-@implementation ProjectsController
+@implementation TokenController
+@end
+
+@implementation Preferences
 @end
 
 @implementation Project
