@@ -9,8 +9,8 @@ class TokenController < UIViewController
   def viewDidLoad
     token_field.delegate = self
 
-    if Preferences.exists?('token')
-      token_field.text = Preferences.read('token')
+    if Persistence.exists?('token')
+      token_field.text = Persistence.read('token')
       performSegueWithIdentifier("push_projects", sender: nil)
     end
   end
@@ -44,8 +44,8 @@ class TokenController < UIViewController
     # TODO: refactoring: single class to handle API calls
     Semaphore.login(token_field.text) do |response|
       if response.success?
-        Preferences.write('token', token_field.text)
-        Preferences.encode('projects', response.object)
+        Persistence.write('token', token_field.text)
+        Persistence.encode('projects', response.object)
 
         SVProgressHUD.showSuccessWithStatus "Success"
 

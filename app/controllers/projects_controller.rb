@@ -4,8 +4,8 @@ class ProjectsController < UITableViewController
   attr_accessor :projects
 
   def viewDidLoad
-    if Preferences.exists?('projects')
-      @projects = Project.initialize_from_json(Preferences.decode('projects'))
+    if Persistence.exists?('projects')
+      @projects = Project.initialize_from_json(Persistence.decode('projects'))
     end
   end
 

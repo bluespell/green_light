@@ -1,7 +1,7 @@
-# Interface for interacting with the defaults system (NSUserDefaults) using BubbleWrap
-# The defaults system allows an application to customize its behavior to match a user’s preferences
-# Notice: only PRIMITIVES here
-class Preferences
+# Interface for persisting data using BubbleWrap
+# Notice: NSUserDefaults allows the persistence of primitives only
+# In order to store objects, it was used NSKeyedArchiver/Unarchiver
+class Persistence
 
   class << self
     def exists?(key)
