@@ -8,6 +8,10 @@ class Project
     @favorite = false
   end
 
+  def self.initialize_from_json(json)
+    json.map { |project| Project.new(project["name"], project["id"], project["hash_id"]) }
+  end
+
   private
 
   def color_status

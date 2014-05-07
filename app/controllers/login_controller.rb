@@ -8,6 +8,11 @@ class LoginController < UIViewController
 
   def viewDidLoad
     token_field.delegate = self
+
+    if Preferences.exists?('token')
+      token_field.text = Preferences.read('token')
+      performSegueWithIdentifier("push_projects", sender: nil)
+    end
   end
 
   def textFieldDidBeginEditing(textField)
@@ -36,16 +41,19 @@ class LoginController < UIViewController
     SVProgressHUD.appearance.setHudBackgroundColor("F2F2E9".to_color)
     SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
 
+    # TODO: refactoring: single class to handle API calls
     Semaphore.login(token_field.text) do |response|
       if response.success?
-        response.object.each do |project|
-          @projects << Project.new(project["name"], project["id"], project["hash_id"])
-        end
+        Preferences.write('token', token_field.text)
+        Preferences.encode('projects', response.object)
 
         SVProgressHUD.showSuccessWithStatus "Success"
+
         performSegueWithIdentifier("push_projects", sender: sender)
       elsif response.failure?
-        SVProgressHUD.showErrorWithStatus "Error"
+        #SVProgressHUD.showErrorWithStatus "Error"
+        SVProgressHUD.dismiss
+        App.alert("Could not validate the token")
       end
     end
   end
