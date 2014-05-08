@@ -23,11 +23,21 @@ class Project
   def build_branches(branches_hash)
     branches_hash.each do |hash|
       @branches << Branch.new({
-        :name         => hash["name"],
+        :name         => hash["branch_name"],
         :result       => hash["result"],
         :project_name => hash["project_name"]
       })
     end
+  end
+
+  def color(branch="master")
+    status = select_branch(branch).result.to_sym
+
+    color_status[status]
+  end
+
+  def select_branch(name)
+    @branches.select { |branch| branch.name == name }.first
   end
 
   private

@@ -17,12 +17,13 @@ class ProjectsController < UITableViewController
   # Returns a specific cell; reuses stuff
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
     @reuseIdentifier ||= "CELL_IDENTIFIER"
+    project = @projects[indexPath.row]
 
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier)
     cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
 
-    cell.setBackgroundColor(UIColor.clearColor) # This is actually transparent
-    cell.textLabel.text = @projects[indexPath.row].name
+    cell.setBackgroundColor(project.color) # This is actually transparent
+    cell.textLabel.text = project.name
     cell
   end
 
