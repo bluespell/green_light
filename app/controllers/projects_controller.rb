@@ -2,6 +2,7 @@ class ProjectsController < UITableViewController
   extend IB
 
   attr_accessor :projects, :selected_project
+  include TimeHelper
 
   def viewDidLoad
     if Persistence.exists?('projects')
@@ -24,7 +25,7 @@ class ProjectsController < UITableViewController
 
     cell.setBackgroundColor(project.color) # This is actually transparent
     cell.textLabel.text = project.name
-    cell.detailTextLabel.text = "Last build: #{project.last_build}"
+    cell.detailTextLabel.text = "Last build: #{time_ago_in_words(project.last_build)}"
     cell
   end
 
