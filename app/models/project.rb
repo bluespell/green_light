@@ -25,7 +25,9 @@ class Project
       @branches << Branch.new({
         :name         => hash["branch_name"],
         :result       => hash["result"],
-        :project_name => hash["project_name"]
+        :project_name => hash["project_name"],
+        :started_at   => hash["started_at"],
+        :finished_at  => hash["finished_at"]
       })
     end
   end
@@ -34,6 +36,10 @@ class Project
     status = select_branch(branch).result.to_sym
 
     color_status[status]
+  end
+
+  def last_build(branch="master")
+    select_branch(branch).finished_at
   end
 
   def select_branch(name)

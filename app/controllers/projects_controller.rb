@@ -20,10 +20,11 @@ class ProjectsController < UITableViewController
     project = @projects[indexPath.row]
 
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier)
-    cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
+    cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleSubtitle, reuseIdentifier:@reuseIdentifier)
 
     cell.setBackgroundColor(project.color) # This is actually transparent
     cell.textLabel.text = project.name
+    cell.detailTextLabel.text = "Last build: #{project.last_build}"
     cell
   end
 
