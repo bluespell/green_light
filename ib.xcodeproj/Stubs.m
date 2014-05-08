@@ -9,13 +9,19 @@
 @implementation AppDelegate
 @end
 
+@implementation ProjectDetailsController
+@end
+
 @implementation ProjectsController
 @end
 
 @implementation TokenController
 @end
 
-@implementation Preferences
+@implementation Branch
+@end
+
+@implementation Persistence
 @end
 
 @implementation Project

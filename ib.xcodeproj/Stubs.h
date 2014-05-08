@@ -15,6 +15,12 @@
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 @end
 
+@interface ProjectDetailsController: UITableViewController
+-(IBAction) viewDidLoad;
+-(IBAction) back:(id) sender;
+
+@end
+
 @interface ProjectsController: UITableViewController
 -(IBAction) viewDidLoad;
 -(IBAction) back:(id) sender;
@@ -33,7 +39,14 @@
 
 @end
 
-@interface Preferences: NSObject
+@interface Branch: NSObject
+-(IBAction) initialize:(id) attrs;
+-(IBAction) started_at;
+-(IBAction) finished_at;
+
+@end
+
+@interface Persistence: NSObject
 -(IBAction) decode:(id) key;
 -(IBAction) read:(id) key;
 -(IBAction) delete:(id) key;
@@ -41,6 +54,10 @@
 @end
 
 @interface Project: NSObject
+-(IBAction) build_branches:(id) branches_hash;
+-(IBAction) color:(id) branch;
+-(IBAction) last_build:(id) branch;
+-(IBAction) select_branch:(id) name;
 -(IBAction) color_status;
 
 @end
