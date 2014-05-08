@@ -1,6 +1,8 @@
 class ProjectsController < UITableViewController
   extend IB
 
+  include TimeHelper
+
   attr_accessor :projects
 
   def viewDidLoad
@@ -24,7 +26,7 @@ class ProjectsController < UITableViewController
 
     cell.setBackgroundColor(project.color) # This is actually transparent
     cell.textLabel.text = project.name
-    cell.detailTextLabel.text = "Last build: #{project.last_build}"
+    cell.detailTextLabel.text = "Last build: #{time_ago_in_words(project.last_build)}"
     cell
   end
 
