@@ -25,7 +25,9 @@ class ProjectsController < UITableViewController
 
     cell.setBackgroundColor(project.color) # This is actually transparent
     cell.textLabel.text = project.name
-    cell.detailTextLabel.text = "Last build: #{time_ago_in_words(project.last_build)}"
+
+    detail_text = project.last_build ? "Last build: #{time_ago_in_words(project.last_build)}" : 'Building...'
+    cell.detailTextLabel.text = detail_text
     cell
   end
 
