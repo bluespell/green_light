@@ -4,7 +4,14 @@ class ProjectsController < UITableViewController
   attr_accessor :projects, :selected_project
   include TimeHelper
 
+  # Outlets
+  outlet :all_projects_button, UITabBarItem
+
   def viewDidLoad
+
+    # TODO: set some nice image for the button...
+    all_projects_button.image = UIImage.imageNamed('menu-25')
+
     if Persistence.exists?('projects')
       @projects = Project.initialize_from_json(Persistence.decode('projects'))
     end
@@ -40,10 +47,5 @@ class ProjectsController < UITableViewController
   # Set the tapped (selected) project in the destination controller
   def prepareForSegue(segue, sender: sender)
     segue.destinationViewController.project = @selected_project
-  end
-
-  # Pops the current view and gets back to the previous one
-  def back(sender)
-    self.navigationController.popViewControllerAnimated(true)
   end
 end

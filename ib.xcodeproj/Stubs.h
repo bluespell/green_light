@@ -15,6 +15,12 @@
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 @end
 
+@interface FavoriteProjectsController: UITableViewController
+
+@property IBOutlet UITabBarItem * favorite_projects_button;
+
+@end
+
 @interface ProjectDetailsController: UITableViewController
 -(IBAction) viewDidLoad;
 -(IBAction) back:(id) sender;
@@ -22,6 +28,14 @@
 @end
 
 @interface ProjectsController: UITableViewController
+
+@property IBOutlet UITabBarItem * all_projects_button;
+
+-(IBAction) viewDidLoad;
+
+@end
+
+@interface ProjectsTabBarController: UITabBarController
 -(IBAction) viewDidLoad;
 -(IBAction) back:(id) sender;
 

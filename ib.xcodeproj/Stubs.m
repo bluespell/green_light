@@ -9,10 +9,16 @@
 @implementation AppDelegate
 @end
 
+@implementation FavoriteProjectsController
+@end
+
 @implementation ProjectDetailsController
 @end
 
 @implementation ProjectsController
+@end
+
+@implementation ProjectsTabBarController
 @end
 
 @implementation TokenController

@@ -1,7 +1,7 @@
 class TokenController < UIViewController
   extend IB
 
-  attr_reader :projects
+  attr_reader :projects, :target_view_title
 
   # Outlets
   outlet :token_field, UITextField
@@ -11,6 +11,9 @@ class TokenController < UIViewController
 
     if Persistence.exists?('token')
       token_field.text = Persistence.read('token')
+
+      # TODO: Set the view title to 'Favorites' if that's the case
+      @target_view_title = 'Projects'
       performSegueWithIdentifier("push_projects", sender: nil)
     end
   end
@@ -63,7 +66,7 @@ class TokenController < UIViewController
   # The prepareForSegue method is called just before a segue is performed.
   # It allows passing data to the new view controller that is the segue’s destination.
   def prepareForSegue(segue, sender: sender)
-    segue.destinationViewController.projects = @projects
+    segue.destinationViewController.view_title = target_view_title
   end
 
   private
