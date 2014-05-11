@@ -3,16 +3,12 @@ class TokenController < UIViewController
 
   outlet :token_field, UITextField
 
-  attr_reader :target_view_title
-
   def viewDidLoad
     token_field.delegate = self
 
     if Persistence.exists?('token')
       token_field.text = Persistence.read('token')
 
-      # TODO: Set the view title to 'Favorites' if that's the case
-      @target_view_title = 'Projects'
       performSegueWithIdentifier("push_projects", sender: nil)
     end
   end
@@ -33,12 +29,10 @@ class TokenController < UIViewController
   end
 
   def login(sender)
-    if token_field.text.empty?
-      App.alert("Your token can't be empty")
-      return
-    end
+    return App.alert("Your token can't be empty") if token_field.text.empty?
 
     token_field.resignFirstResponder
+
     SVProgressHUD.appearance.setHudBackgroundColor("F2F2E9".to_color)
     SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
 
@@ -56,14 +50,6 @@ class TokenController < UIViewController
         App.alert("Could not validate the token")
       end
     end
-  end
-
-  # TODO hardcoding for testing purposes for now. Pass in real data later
-
-  # The prepareForSegue method is called just before a segue is performed.
-  # It allows passing data to the new view controller that is the segue’s destination.
-  def prepareForSegue(segue, sender: sender)
-    segue.destinationViewController.view_title = target_view_title
   end
 
   private

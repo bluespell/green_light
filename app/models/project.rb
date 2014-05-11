@@ -9,6 +9,10 @@ class Project
 
   has_many :branches, :dependent => :destroy
 
+  def self.any_favorite?
+    all.any?(&:favorite)
+  end
+
   def master_branch
     select_branch "master"
   end
