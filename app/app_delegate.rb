@@ -19,5 +19,6 @@ class AppDelegate
   def load_model_data
     Project.deserialize_from_file "projects.dat"
     Branch.deserialize_from_file "branches.dat"
+    Token.deserialize_from_file "tokens.dat"
   end
 end
