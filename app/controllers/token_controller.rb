@@ -1,10 +1,9 @@
 class TokenController < UIViewController
   extend IB
 
-  attr_reader :projects, :target_view_title
-
-  # Outlets
   outlet :token_field, UITextField
+
+  attr_reader :target_view_title
 
   def viewDidLoad
     token_field.delegate = self
@@ -39,7 +38,6 @@ class TokenController < UIViewController
       return
     end
 
-    @projects = []
     token_field.resignFirstResponder
     SVProgressHUD.appearance.setHudBackgroundColor("F2F2E9".to_color)
     SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
@@ -48,13 +46,12 @@ class TokenController < UIViewController
     Semaphore.login(token_field.text) do |response|
       if response.success?
         Persistence.write('token', token_field.text)
-        Persistence.encode('projects', response.object)
+        ProjectsBuilder.build! response.object
 
         SVProgressHUD.showSuccessWithStatus "Success"
 
         performSegueWithIdentifier("push_projects", sender: sender)
       elsif response.failure?
-        #SVProgressHUD.showErrorWithStatus "Error"
         SVProgressHUD.dismiss
         App.alert("Could not validate the token")
       end

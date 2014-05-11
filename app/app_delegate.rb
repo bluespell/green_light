@@ -1,6 +1,7 @@
 class AppDelegate
 
   def application(application, didFinishLaunchingWithOptions:launchOptions)
+    load_model_data
 
     # Storyboard instance
     storyboard = UIStoryboard.storyboardWithName("Storyboard", bundle: nil)
@@ -9,7 +10,14 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.rootViewController = storyboard.instantiateInitialViewController
     @window.makeKeyAndVisible
+
     true
   end
 
+  private
+
+  def load_model_data
+    Project.deserialize_from_file "projects.dat"
+    Branch.deserialize_from_file "branches.dat"
+  end
 end

@@ -1,19 +1,24 @@
 class Branch
+  include MotionModel::Model
+  include MotionModel::ArrayModelAdapter
   include TimeHelper
 
-  attr_accessor :name, :project_name, :result, :started_at, :finished_at
+  columns :name        => :string,
+          :result      => :string,
+          :started_at  => :date,
+          :finished_at => :date
 
-  def initialize(attrs={})
-    attrs.each do |key, value|
-      self.send "#{key}=", value
-    end
-  end
+  belongs_to :project
 
   def started_at=(time)
-    @started_at = time_from_string time
+    time = time_from_string(time) if time.is_a? String
+
+    @data[:started_at] = time
   end
 
   def finished_at=(time)
-    @finished_at = time_from_string time
+    time = time_from_string(time) if time.is_a? String
+
+    @data[:finished_at] = time
   end
 end

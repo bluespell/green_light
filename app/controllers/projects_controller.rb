@@ -1,20 +1,16 @@
 class ProjectsController < UITableViewController
   extend IB
-
-  attr_accessor :projects, :selected_project
   include TimeHelper
 
-  # Outlets
   outlet :all_projects_button, UITabBarItem
 
-  def viewDidLoad
+  attr_accessor :projects, :selected_project
 
+  def viewDidLoad
     # TODO: set some nice image for the button...
     all_projects_button.image = UIImage.imageNamed('menu-25')
 
-    if Persistence.exists?('projects')
-      @projects = Project.initialize_from_json(Persistence.decode('projects'))
-    end
+    @projects = Project.all
   end
 
   # Returns the number os cells
@@ -30,7 +26,7 @@ class ProjectsController < UITableViewController
     cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier)
     cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleSubtitle, reuseIdentifier:@reuseIdentifier)
 
-    cell.setBackgroundColor(project.color) # This is actually transparent
+    cell.setBackgroundColor(project.status_color)
     cell.textLabel.text = project.name
 
     detail_text = project.last_build ? "Last build: #{time_ago_in_words(project.last_build)}" : 'Building...'
