@@ -7,10 +7,12 @@ class ProjectsController < UITableViewController
   attr_accessor :projects, :selected_project
 
   def viewDidLoad
-    # TODO: set some nice image for the button...
     all_projects_button.image = UIImage.imageNamed('menu-25')
 
     @projects = Project.all
+
+    # Add a nice badge to this tab bar item
+    @projects.count > 1 ? self.tabBarItem.setBadgeValue(@projects.count.to_s) : self.tabBarItem = nil
   end
 
   # Returns the number os cells
@@ -37,7 +39,7 @@ class ProjectsController < UITableViewController
   # Calls the ProjectDetailsController when a project is tapped (selected)
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
     @selected_project = @projects[indexPath.row]
-    performSegueWithIdentifier("push_project_details", sender: nil)
+    performSegueWithIdentifier("push_project_details_from_all", sender: nil)
   end
 
   # Set the tapped (selected) project in the destination controller

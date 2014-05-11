@@ -13,6 +13,8 @@
 @end
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
+-(IBAction) load_model_data;
+
 @end
 
 @interface FavoriteProjectsController: UITableViewController
@@ -38,6 +40,7 @@
 @interface ProjectsTabBarController: UITabBarController
 -(IBAction) viewDidLoad;
 -(IBAction) back:(id) sender;
+-(IBAction) view_title;
 
 @end
 
@@ -54,7 +57,6 @@
 @end
 
 @interface Branch: NSObject
--(IBAction) initialize:(id) attrs;
 -(IBAction) started_at;
 -(IBAction) finished_at;
 
@@ -68,11 +70,14 @@
 @end
 
 @interface Project: NSObject
--(IBAction) build_branches:(id) branches_hash;
--(IBAction) color:(id) branch;
--(IBAction) last_build:(id) branch;
--(IBAction) select_branch:(id) name;
+-(IBAction) master_branch;
+-(IBAction) status_color;
+-(IBAction) last_build;
 -(IBAction) color_status;
+-(IBAction) select_branch:(id) name;
 
+@end
+
+@interface ProjectsBuilder: NSObject
 @end
 

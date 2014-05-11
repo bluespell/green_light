@@ -4,6 +4,10 @@ class ProjectsTabBarController < UITabBarController
   def viewDidLoad
     self.delegate = self # So it can responde to 'didSelectViewController', for example
     self.navigationItem.title = view_title
+
+    # Index 0 = ProjectsController
+    # Index 1 = FavoriteProjectsController
+    Project.any_favorite? ? self.selectedIndex = 1 : self.selectedIndex = 0
   end
 
   # Called each time a tab item is selected (at the bottom of the screen)
@@ -17,6 +21,7 @@ class ProjectsTabBarController < UITabBarController
   end
 
   def view_title
-    Project.any_favorite? ? 'Favorites' : 'Projects'
+    Project.any_favorite? ? 'Favorites' : 'All Projects'
   end
+
 end

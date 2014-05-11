@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46T-yo-UfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-540" y="95"/>
+            <point key="canvasLocation" x="-1184" y="99"/>
         </scene>
         <!--Projects Tab Bar Controller - Projects / Favorites-->
         <scene sceneID="GWT-xn-lfs">
@@ -101,7 +101,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZJt-xE-rga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-540" y="780"/>
+            <point key="canvasLocation" x="-1184" y="784"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qLF-TO-HjQ">
@@ -124,7 +124,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMf-V1-rHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-978" y="95"/>
+            <point key="canvasLocation" x="-1622" y="99"/>
         </scene>
         <!--Favorite Projects Controller - Favorites-->
         <scene sceneID="V21-DR-4VG">
@@ -155,11 +155,12 @@
                     <navigationItem key="navigationItem" title="Favorites" id="bIF-lZ-9e4"/>
                     <connections>
                         <outlet property="favorite_projects_button" destination="T45-8p-q2N" id="Eqa-iB-huN"/>
+                        <segue destination="Hdo-gN-jf7" kind="push" identifier="push_project_details_from_fav" id="45H-3W-XXK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D23-9X-Wr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="1093"/>
+            <point key="canvasLocation" x="-644" y="1097"/>
         </scene>
         <!--Projects Controller - Projects-->
         <scene sceneID="uFz-cf-dE1">
@@ -192,12 +193,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <connections>
                         <outlet property="all_projects_button" destination="SZl-Bq-U9R" id="KIs-UF-NUx"/>
-                        <segue destination="Hdo-gN-jf7" kind="push" identifier="push_project_details" id="c2c-uk-2zf"/>
+                        <segue destination="Hdo-gN-jf7" kind="push" identifier="push_project_details_from_all" id="c2c-uk-2zf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B84-sQ-0xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="430"/>
+            <point key="canvasLocation" x="-644" y="434"/>
         </scene>
         <!--Project Details Controller - Project Name-->
         <scene sceneID="V1Y-8Z-pnK">
@@ -224,7 +225,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Project Name" id="iXx-0p-aDe">
-                        <barButtonItem key="leftBarButtonItem" title="Projects" id="L5K-kj-TSW">
+                        <barButtonItem key="leftBarButtonItem" title="All Projects" id="L5K-kj-TSW">
                             <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="back:" destination="Hdo-gN-jf7" id="ygh-Dl-mWk"/>
@@ -235,7 +236,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VKj-3h-cPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="439" y="430"/>
+            <point key="canvasLocation" x="-100" y="784"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
@@ -244,4 +245,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="c2c-uk-2zf"/>
+    </inferredMetricsTieBreakers>
 </document>
