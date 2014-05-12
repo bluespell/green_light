@@ -5,9 +5,20 @@ class ProjectsTabBarController < UITabBarController
     self.delegate = self # So it can responde to 'didSelectViewController', for example
     self.navigationItem.title = view_title
 
-    # Index 0 = ProjectsController
-    # Index 1 = FavoriteProjectsController
-    Project.any_favorite? ? self.selectedIndex = 1 : self.selectedIndex = 0
+    # TODO: refactor me!
+    # All Projects View (Index 0)
+    self.viewControllers[0].all_projects_button.image = UIImage.imageNamed('menu-25')
+    Project.count > 0 ?
+        self.viewControllers[0].tabBarItem.setBadgeValue(Project.count.to_s) :
+        self.viewControllers[0].tabBarItem.setBadgeValue(nil)
+
+    # Favorites View (Index 1)
+    if Project.any_favorite?
+      self.viewControllers[1].tabBarItem.setBadgeValue(Project.favorites.count.to_s)
+      self.selectedIndex = 1
+    else
+      self.viewControllers[1].tabBarItem.setBadgeValue(nil)
+    end
   end
 
   # Called each time a tab item is selected (at the bottom of the screen)

@@ -21,8 +21,5 @@ class ProjectsBuilder
 
       project.save
     end
-
-    Project.serialize_to_file "projects.dat"
-    Branch.serialize_to_file "branches.dat"
   end
 end

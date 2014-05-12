@@ -9,8 +9,12 @@ class Project
 
   has_many :branches, :dependent => :destroy
 
+  def self.favorites
+    where(:favorite).eq(true)
+  end
+
   def self.any_favorite?
-    all.any?(&:favorite)
+    favorites.count > 0
   end
 
   def master_branch

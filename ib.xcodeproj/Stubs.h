@@ -31,7 +31,7 @@
 
 @end
 
-@interface ProjectsController: SWTableViewCell
+@interface ProjectsController: UITableViewController
 
 @property IBOutlet UITabBarItem * all_projects_button;
 
