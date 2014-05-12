@@ -40,7 +40,7 @@ class TokenController < UIViewController
     # TODO: refactoring: single class to handle API calls
     Semaphore.login(token_field.text) do |response|
       if response.success?
-        Token.create_and_serialize token_field.text
+        Token.create(:value => token_field.text)
         ProjectsBuilder.build! response.object
 
         SVProgressHUD.showSuccessWithStatus "Success"
