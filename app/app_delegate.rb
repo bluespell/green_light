@@ -1,5 +1,4 @@
 class AppDelegate
-
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     load_model_data
 
@@ -20,15 +19,15 @@ class AppDelegate
 
   private
 
+  def projects
+    { Project => "projects.dat", Branch => "branches.dat", Token => "tokens.dat" }
+  end
+
   def load_model_data
-    Project.deserialize_from_file "projects.dat"
-    Branch.deserialize_from_file "branches.dat"
-    Token.deserialize_from_file "tokens.dat"
+    projects.each { |project, file| project.deserialize_from_file file }
   end
 
   def write_model_data
-    Project.serialize_to_file "projects.dat"
-    Branch.serialize_to_file "branches.dat"
-    Token.serialize_to_file "tokens.dat"
+    projects.each { |project, file| project.serialize_to_file file }
   end
 end
