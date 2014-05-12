@@ -39,31 +39,30 @@ class ProjectsController < UITableViewController
 
     # Add to favorites
     cell.setSwipeGestureWithView(
-        image_view,
-        color: "#8DB53E".to_color,
-        mode: MCSwipeTableViewCellModeSwitch,
-        state: MCSwipeTableViewCellState1,
-        completionBlock: -> (cell, state, mode) {
-          project.favorite = true
-          project.save
+      image_view,
+      color: "#8DB53E".to_color,
+      mode: MCSwipeTableViewCellModeSwitch,
+      state: MCSwipeTableViewCellState1,
+      completionBlock: -> (cell, state, mode) {
+        project.favorite = true
+        project.save
           # TODO: update badge number in FavoriteController
-        }
+      }
     )
 
     # Remove to favorites
     cell.setSwipeGestureWithView(
-        image_view,
-        color: "#B13200".to_color,
-        mode: MCSwipeTableViewCellModeSwitch,
-        state: MCSwipeTableViewCellState2,
-        completionBlock: -> (cell, state, mode) {
-          project.favorite = false
-          project.save
-          # TODO: update badge number in FavoriteController
-        }
+      image_view,
+      color: "#B13200".to_color,
+      mode: MCSwipeTableViewCellModeSwitch,
+      state: MCSwipeTableViewCellState2,
+      completionBlock: -> (cell, state, mode) {
+        project.favorite = false
+        project.save
+        # TODO: update badge number in FavoriteController
+      }
     )
 
-    cell.delegate = self
     cell
   end
 

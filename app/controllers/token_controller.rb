@@ -4,28 +4,21 @@ class TokenController < UIViewController
   outlet :token_field, UITextField
 
   def viewDidLoad
-    token = Token.value
+    token_field.text = Token.value
     token_field.delegate = self
 
-    if !token.nil?
-      token_field.text = token
-
-      performSegueWithIdentifier("push_projects", sender: nil)
-    end
+    performSegueWithIdentifier("push_projects", sender: nil) unless token_field.text.empty?
   end
 
   def textFieldDidBeginEditing(textField)
-    # Screen goes up when the keyboard appears
     animate_text_field textField, :direction => :up
   end
 
   def textFieldDidEndEditing(textField)
-    # Screen goes down when the keyboard disappears
     animate_text_field textField, :direction => :down
   end
 
   def textFieldShouldReturn(textField)
-    # Hide the keyboard when "Done" is pressed
     textField.resignFirstResponder
   end
 
