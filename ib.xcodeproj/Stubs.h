@@ -21,6 +21,8 @@
 
 @property IBOutlet UITabBarItem * favorite_projects_button;
 
+-(IBAction) viewDidLoad;
+
 @end
 
 @interface ProjectDetailsController: UITableViewController
@@ -29,7 +31,7 @@
 
 @end
 
-@interface ProjectsController: UITableViewController
+@interface ProjectsController: SWTableViewCell
 
 @property IBOutlet UITabBarItem * all_projects_button;
 
@@ -62,13 +64,6 @@
 
 @end
 
-@interface Persistence: NSObject
--(IBAction) decode:(id) key;
--(IBAction) read:(id) key;
--(IBAction) delete:(id) key;
-
-@end
-
 @interface Project: NSObject
 -(IBAction) master_branch;
 -(IBAction) status_color;
@@ -76,6 +71,9 @@
 -(IBAction) color_status;
 -(IBAction) select_branch:(id) name;
 
+@end
+
+@interface Token: NSObject
 @end
 
 @interface ProjectsBuilder: NSObject

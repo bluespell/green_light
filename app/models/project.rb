@@ -2,7 +2,7 @@ class Project
   include MotionModel::Model
   include MotionModel::ArrayModelAdapter
 
-  columns :semaphaore_id => :integer,
+  columns :semaphore_id  => :integer,
           :name          => :string,
           :hash_id       => :string,
           :favorite      => { :type => :boolean, :default => false }
@@ -31,9 +31,9 @@ class Project
 
   def color_status
     {
-      :passed => "E6F4CA".to_color,
-      :failed => "F4D9CA".to_color,
-      :pending => "DDEFF8".to_color
+      :passed  => { :foreground => "E6F4CA".to_color, :background => "EAF3D8".to_color },
+      :failed  => { :foreground => "F4D9CA".to_color, :background => "F3E2D8".to_color },
+      :pending => { :foreground => "DDEFF8".to_color, :background => "EAF3F7".to_color }
     }
   end
 
