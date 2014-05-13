@@ -1,6 +1,5 @@
 class ProjectsController < UITableViewController
   extend IB
-  include TimeHelper
 
   outlet :all_projects_button, UITabBarItem
 
@@ -15,55 +14,11 @@ class ProjectsController < UITableViewController
     @projects.count
   end
 
-  # Returns a specific cell; reuses stuff
-  # TODO: create a custom cell class to reuse
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    @reuseIdentifier ||= "CELL_IDENTIFIER"
-    project = @projects[indexPath.row]
-
-    cell ||= MCSwipeTableViewCell.alloc.initWithStyle(UITableViewCellStyleSubtitle, reuseIdentifier: @reuseIdentifier)
-
-    detail_text = project.last_build ? "Last build: #{time_ago_in_words(project.last_build)}" : 'Building...'
-    cell.detailTextLabel.text = detail_text
-
-    cell.setBackgroundColor(project.status_color[:foreground])
-    cell.textLabel.text = project.name
-
-    # Configuring the views and colors.
-    image_view = UIImageView.alloc.initWithImage(UIImage.imageNamed('star-32'))
-    image_view.contentMode = UIViewContentModeCenter
-
-    # Changing the trigger percentage
-    cell.firstTrigger = 0.25;
-    cell.secondTrigger = 0.6;
-
-    # Add to favorites
-    cell.setSwipeGestureWithView(
-      image_view,
-      color: "#8DB53E".to_color,
-      mode: MCSwipeTableViewCellModeSwitch,
-      state: MCSwipeTableViewCellState1,
-      completionBlock: -> (cell, state, mode) {
-        project.favorite = true
-        project.save
-          # TODO: update badge number in FavoriteController
-      }
-    )
-
-    # Remove to favorites
-    cell.setSwipeGestureWithView(
-      image_view,
-      color: "#B13200".to_color,
-      mode: MCSwipeTableViewCellModeSwitch,
-      state: MCSwipeTableViewCellState2,
-      completionBlock: -> (cell, state, mode) {
-        project.favorite = false
-        project.save
-        # TODO: update badge number in FavoriteController
-      }
-    )
-
-    cell
+    @reuseIdentifier ||= "project_cell"
+    #TODO: reuse cells
+    #cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier)
+    cell ||= ProjectCellBuilder.new(:project => @projects[indexPath.row], :reuse_identifier => @reuseIdentifier).build_cell
   end
 
   # Calls the ProjectDetailsController when a project is tapped (selected)
