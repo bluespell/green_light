@@ -10,6 +10,7 @@ class ProjectCellBuilder
 
   def build_cell
     @cell = MCSwipeTableViewCell.alloc.initWithStyle(UITableViewCellStyleSubtitle, reuseIdentifier: @reuseIdentifier)
+
     @cell.textLabel.text = @project.name
     @cell.detailTextLabel.text = detail_text
 
@@ -17,6 +18,7 @@ class ProjectCellBuilder
     @cell.secondTrigger = 0.6
 
     configure_cell_colors
+
     swipe_add_favorite
     swipe_remove_favorite
 
@@ -36,11 +38,6 @@ class ProjectCellBuilder
     view.setBackgroundColor("F2F2E9".to_color)
     @cell.selectedBackgroundView = view
     @cell.setBackgroundColor(@project.status_color[:foreground])
-  end
-
-  def favorite_icon
-    image_view = UIImageView.alloc.initWithImage(UIImage.imageNamed('star-40'))
-    image_view.contentMode = UIViewContentModeCenter
   end
 
   def swipe_add_favorite
@@ -63,5 +60,10 @@ class ProjectCellBuilder
         # TODO: update badge number in FavoriteController
       }
     )
+  end
+
+  def favorite_icon
+    image_view = UIImageView.alloc.initWithImage(UIImage.imageNamed('star-40'))
+    image_view.contentMode = UIViewContentModeCenter
   end
 end

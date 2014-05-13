@@ -24,7 +24,7 @@ class FavoriteProjectsController < UITableViewController
   # Calls the ProjectDetailsController when a project is tapped (selected)
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
     @selected_project = @favorite_projects[indexPath.row]
-    performSegueWithIdentifier("push_project_details_from_all", sender: nil)
+    performSegueWithIdentifier("push_project_details_from_fav", sender: nil)
   end
 
   # Set the tapped (selected) project in the destination controller
