@@ -17,6 +17,10 @@ class Project
     favorites.count > 0
   end
 
+  def self.ordered_by_last_build
+    order { |one, two| two.last_build <=> one.last_build }.all
+  end
+
   def master_branch
     select_branch "master"
   end

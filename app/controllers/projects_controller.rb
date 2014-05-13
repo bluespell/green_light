@@ -7,7 +7,7 @@ class ProjectsController < UITableViewController
   attr_accessor :projects, :selected_project
 
   def viewDidLoad
-    @projects = Project.all
+    @projects = Project.ordered_by_last_build
   end
 
   # Returns the number os cells
