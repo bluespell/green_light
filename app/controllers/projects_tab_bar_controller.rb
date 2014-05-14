@@ -2,7 +2,7 @@
 # Has a back button that shows the TokenController
 class ProjectsTabBarController < UITabBarController
   def viewDidLoad
-    self.delegate = self # So it can respond to 'didSelectViewController', for example
+    self.delegate = self
     self.navigationItem.title = view_title
     self.viewControllers[0].all_projects_button.image = UIImage.imageNamed('menu-25')
 
@@ -25,6 +25,7 @@ class ProjectsTabBarController < UITabBarController
     Project.any_favorite? ? 'Favorites' : 'All Projects'
   end
 
+  # TODO NSNotificationCenter
   def set_badge_count
     self.viewControllers[0].tabBarItem.setBadgeValue project_counter(:all)
     self.viewControllers[1].tabBarItem.setBadgeValue project_counter(:favorites)

@@ -13,13 +13,17 @@
 @end
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
+-(IBAction) applicationDidEnterBackground:(id) application;
+-(IBAction) projects;
 -(IBAction) load_model_data;
+-(IBAction) write_model_data;
 
 @end
 
 @interface FavoriteProjectsController: UITableViewController
 
 @property IBOutlet UITabBarItem * favorite_projects_button;
+@property IBOutlet UIView * favorite_instructions;
 
 -(IBAction) viewDidLoad;
 
@@ -43,6 +47,8 @@
 -(IBAction) viewDidLoad;
 -(IBAction) back:(id) sender;
 -(IBAction) view_title;
+-(IBAction) set_badge_count;
+-(IBAction) project_counter:(id) method;
 
 @end
 
@@ -74,6 +80,17 @@
 @end
 
 @interface Token: NSObject
+@end
+
+@interface ProjectCell: UITableViewCell
+
+@property IBOutlet UILabel * project_title;
+@property IBOutlet UILabel * project_details;
+
+-(IBAction) configure:(id) project;
+-(IBAction) detail_text;
+-(IBAction) configure_cell_colors;
+
 @end
 
 @interface ProjectsBuilder: NSObject

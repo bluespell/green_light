@@ -33,6 +33,9 @@
 @implementation Token
 @end
 
+@implementation ProjectCell
+@end
+
 @implementation ProjectsBuilder
 @end
 

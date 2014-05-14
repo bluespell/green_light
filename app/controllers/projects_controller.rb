@@ -15,10 +15,11 @@ class ProjectsController < UITableViewController
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    @reuseIdentifier ||= "project_cell"
-    #TODO: reuse cells
-    #cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier)
-    cell ||= ProjectCellBuilder.new(:project => @projects[indexPath.row], :reuse_identifier => @reuseIdentifier).build_cell
+    reuse_identifier ||= "project_cell"
+    project = @projects[indexPath.row]
+
+    cell = tableView.dequeueReusableCellWithIdentifier(reuse_identifier)
+    cell.configure(project)
   end
 
   # Calls the ProjectDetailsController when a project is tapped (selected)
