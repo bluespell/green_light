@@ -23,9 +23,10 @@
 @interface FavoriteProjectsController: UITableViewController
 
 @property IBOutlet UITabBarItem * favorite_projects_button;
-@property IBOutlet UIView * favorite_instructions;
 
 -(IBAction) viewDidLoad;
+-(IBAction) viewWillAppear:(id) animated;
+-(IBAction) show_instructions;
 
 @end
 
@@ -83,13 +84,13 @@
 @end
 
 @interface ProjectCell: UITableViewCell
+-(IBAction) configure:(id) project;
 
-@property IBOutlet UILabel * project_title;
-@property IBOutlet UILabel * project_details;
+@end
 
+@interface ProjectCellView: UIView
 -(IBAction) configure:(id) project;
 -(IBAction) detail_text;
--(IBAction) configure_cell_colors;
 
 @end
 

@@ -6,7 +6,9 @@ class ProjectsController < UITableViewController
   attr_accessor :projects, :selected_project
 
   def viewDidLoad
-    @projects = Project.ordered_by_last_build
+    # FIXME: Uninstall the app, run it. The order method is exploding for some reason
+    #@projects = Project.ordered_by_last_build
+    @projects = Project.all
   end
 
   # Returns the number os cells

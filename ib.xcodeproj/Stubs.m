@@ -36,6 +36,9 @@
 @implementation ProjectCell
 @end
 
+@implementation ProjectCellView
+@end
+
 @implementation ProjectsBuilder
 @end
 

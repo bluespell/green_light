@@ -1,33 +1,31 @@
 class ProjectCell < UITableViewCell
-  extend IB
-  include TimeHelper
-
-  attr_accessor :project
-
-  outlet :project_title, UILabel
-  outlet :project_details, UILabel
 
   def configure(project)
-    @project = project
+    background_color = UIView.alloc.init
+    background_color.setBackgroundColor(project.status_color[:foreground])
+    self.setSelectedBackgroundView(background_color)
 
-    @project_title.text = project.name
-    @project_details.text = detail_text
+    paper_fold = PaperFoldView.alloc.initWithFrame([[0, 0],[self.frame.size.width, self.frame.size.height]])
+    paper_fold.setEnableRightFoldDragging(false)
 
-    configure_cell_colors
-  end
+    left_content = UIView.alloc.initWithFrame([[0, 0],[60, self.frame.size.height]])
+    left_content.setAutoresizingMask(UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth)
+    left_content.setBackgroundColor(project.status_color[:background])
 
-  private
+    if (project.favorite)
+      favorite_icon = UIImageView.alloc.initWithImage(UIImage.imageNamed('star-40-red'))
+    else
+      favorite_icon = UIImageView.alloc.initWithImage(UIImage.imageNamed('star-40-green'))
+    end
+    favorite_icon.center = left_content.center
 
-  def detail_text
-    return 'Building...' unless @project.last_build
+    left_content.addSubview(favorite_icon)
+    paper_fold.setLeftFoldContentView(left_content)
 
-    "Last build: #{time_ago_in_words(@project.last_build)}"
-  end
+    center_content = ProjectCellView.alloc.initWithFrame([[0, 0],[self.frame.size.width, self.frame.size.height]])
+    center_content.configure(project)
+    paper_fold.setCenterContentView(center_content)
 
-  def configure_cell_colors
-    view = UIView.alloc.init
-    view.setBackgroundColor("F2F2E9".to_color)
-    self.selectedBackgroundView = view
-    self.setBackgroundColor(@project.status_color[:foreground])
+    self.addSubview(paper_fold)
   end
 end
