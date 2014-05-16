@@ -24,7 +24,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.1.0)
   - DateTools (~> 1.2.0)
-  - PaperFold (~> 1.1)
+  - PaperFold
   - SVProgressHUD (~> 1.0)
 
 SPEC CHECKSUMS:

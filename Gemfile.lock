@@ -41,6 +41,7 @@ GEM
       cocoapods (>= 0.32.1)
     motion-devices (0.0.2)
     motion-require (0.2.0)
+    motion-reveal (0.0.1)
     motion-support (0.2.6)
       motion-require (>= 0.0.6)
     motion_model (0.5.3)
@@ -65,5 +66,6 @@ DEPENDENCIES
   ib (~> 0.4.7)
   motion-cocoapods (~> 1.4.1)
   motion-devices (~> 0.0.2)
+  motion-reveal
   motion_model (~> 0.5.3)
   rake (~> 10.3.1)
