@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
-#import <Reveal/Reveal.h>
 #import <Security/Security.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <UIKit/UIKit.h>
@@ -25,9 +24,10 @@
 @interface FavoriteProjectsController: UITableViewController
 
 @property IBOutlet UITabBarItem * favorite_projects_button;
+@property IBOutlet UITableView * favorites_table_view;
 
--(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
+-(IBAction) update_favorites;
 -(IBAction) show_instructions;
 
 @end
@@ -41,8 +41,10 @@
 @interface ProjectsController: UITableViewController
 
 @property IBOutlet UITabBarItem * all_projects_button;
+@property IBOutlet UITableView * projects_table_view;
 
--(IBAction) viewDidLoad;
+-(IBAction) viewWillAppear:(id) animated;
+-(IBAction) update_projects;
 
 @end
 
@@ -86,13 +88,17 @@
 @end
 
 @interface ProjectCell: UITableViewCell
--(IBAction) configure:(id) project;
 
-@end
+@property IBOutlet UILabel * project_name;
+@property IBOutlet UILabel * project_details;
+@property IBOutlet UIButton * favorite_button;
 
-@interface ProjectCellView: UIView
 -(IBAction) configure:(id) project;
+-(IBAction) handle_favorite;
+-(IBAction) configure_cell_colors;
+-(IBAction) configure_cell_labels;
 -(IBAction) detail_text;
+-(IBAction) configure_favorite_button;
 
 @end
 

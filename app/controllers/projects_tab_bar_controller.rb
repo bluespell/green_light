@@ -1,6 +1,10 @@
 # Holds "All Projects" (ProjectsController) and "Favorite Projects" (FavoriteProjectsController)
 # Has a back button that shows the TokenController
 class ProjectsTabBarController < UITabBarController
+
+  # TODO: if the "TOKEN" button is pressed, show a message to users:
+  # Are you sure you want to proceed? All projects will be lost or something
+
   def viewDidLoad
     self.delegate = self
     self.navigationItem.title = view_title

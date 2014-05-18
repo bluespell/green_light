@@ -1,15 +1,19 @@
 class FavoriteProjectsController < UITableViewController
   extend IB
+
   outlet :favorite_projects_button, UITabBarItem
+  outlet :favorites_table_view, UITableView
 
   attr_accessor :favorite_projects, :selected_project
 
-  def viewDidLoad
-    @favorite_projects = Project.favorites.to_a
+  def viewWillAppear(animated)
+    update_favorites
+    show_instructions if @favorite_projects.count == 0
   end
 
-  def viewWillAppear(animated)
-    show_instructions if favorite_projects.count == 0
+  def update_favorites
+    @favorite_projects = Project.favorites.to_a
+    favorites_table_view.reloadData
   end
 
   # Returns the number os cell
@@ -19,10 +23,9 @@ class FavoriteProjectsController < UITableViewController
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
     reuse_identifier ||= 'project_cell'
-    project = @favorite_projects[indexPath.row]
 
     cell = tableView.dequeueReusableCellWithIdentifier(reuse_identifier)
-    cell.configure(project)
+    cell.configure(@favorite_projects[indexPath.row])
   end
 
   # Calls the ProjectDetailsController when a project is tapped (selected)

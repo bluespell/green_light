@@ -16,6 +16,5 @@ Motion::Project::App.setup do |app|
   app.pods do
     dependency 'SVProgressHUD', '~> 1.0'
     dependency 'DateTools', '~> 1.2.0'
-    dependency 'PaperFold', '~> 1.1'
   end
 end

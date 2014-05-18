@@ -66,6 +66,6 @@ DEPENDENCIES
   ib (~> 0.4.7)
   motion-cocoapods (~> 1.4.1)
   motion-devices (~> 0.0.2)
-  motion-reveal
+  motion-reveal (= 0.0.1)
   motion_model (~> 0.5.3)
   rake (~> 10.3.1)
