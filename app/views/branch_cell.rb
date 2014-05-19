@@ -1,6 +1,7 @@
 class BranchCell < UITableViewCell
   extend IB
   include ColorHelper
+  include TimeHelper
 
   attr_accessor :branch
 
@@ -14,7 +15,7 @@ class BranchCell < UITableViewCell
     @branch = branch
 
     branch_name.text = branch.name
-    last_build.text = branch.finished_at.time_ago_in_words
+    last_build.text = building_date branch
     branch_status.text = branch.result
 
     branch_status_background.setBackgroundColor color[:strong]

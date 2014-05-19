@@ -26,10 +26,8 @@ class Project
     select_branch "master"
   end
 
-  def status_color
-    status = master_branch.result.to_sym
-
-    color_status[status]
+  def status
+    master_branch.result
   end
 
   def last_build
@@ -48,16 +46,11 @@ class Project
     last_build || Time.new
   end
 
-  private
-
-  # TODO: refactor colors so projects, branches, etc, can reuse
-  def color_status
-    {
-      :passed  => { :foreground => "E6F4CA".to_color, :background => "EAF3D8".to_color },
-      :failed  => { :foreground => "F4D9CA".to_color, :background => "F3E2D8".to_color },
-      :pending => { :foreground => "DDEFF8".to_color, :background => "EAF3F7".to_color }
-    }
+  def toggle_favorite
+    @data[:favorite] = !@data[:favorite]
   end
+
+  private
 
   def select_branch(name)
     branches.where(:name).eq(name).first

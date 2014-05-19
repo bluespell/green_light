@@ -1,5 +1,6 @@
 class ProjectDetailsHeaderView < UIView
   extend IB
+  include ColorHelper
   include TimeHelper
 
   outlet :project_name, UILabel
@@ -12,19 +13,13 @@ class ProjectDetailsHeaderView < UIView
 
   def configure(project)
     project_name.text = project.name
-    last_build.text = project.last_build.time_ago_in_words
+    last_build.text = building_date project.master_branch
     project_status.text = project.master_branch.result
 
     number_of_branches.text = project.branches.count.to_s
     number_of_branches_passed.text = project.passed_branches.count.to_s
     number_of_branches_failed.text = project.failed_branches.count.to_s
 
-    if(project.master_branch.failed?)
-      project_status_background.setBackgroundColor('FF0000'.to_color)
-    elsif(project.master_branch.pending?)
-      project_status_background.setBackgroundColor('DDEFF8'.to_color)
-    else
-      project_status_background.setBackgroundColor('59AF00'.to_color)
-    end
+    project_status_background.setBackgroundColor send("#{project_status.text}_colors")[:strong]
   end
 end

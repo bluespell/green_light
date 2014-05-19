@@ -1,5 +1,7 @@
 class ProjectCell < UITableViewCell
   extend IB
+  include ColorHelper
+  include TimeHelper
 
   outlet :project_name, UILabel
   outlet :project_details, UILabel
@@ -10,8 +12,17 @@ class ProjectCell < UITableViewCell
   def configure(project)
     @project = project
 
-    configure_cell_colors
-    configure_cell_labels
+    # Cell selected color
+    @selected_background_view_color ||= UIView.alloc.init
+    @selected_background_view_color.setBackgroundColor cell_color[:strong]
+    self.setSelectedBackgroundView @selected_background_view_color
+
+    # Cell background color
+    self.setBackgroundColor cell_color[:light]
+
+    project_name.text = @project.name
+    project_details.text = building_date project.master_branch
+
     configure_favorite_button
 
     self
@@ -19,36 +30,21 @@ class ProjectCell < UITableViewCell
 
   # Handles the interaction with the favorite button
   def handle_favorite
-    @project.favorite ? @project.favorite = false : @project.favorite = true
+    @project.toggle_favorite
     configure_favorite_button
   end
 
   private
 
-  def configure_cell_colors
-    # Cell selected color
-    @selected_background_view_color ||= UIView.alloc.init
-    @selected_background_view_color.setBackgroundColor(@project.status_color[:foreground])
-    self.setSelectedBackgroundView(@selected_background_view_color)
-
-    # Cell background color
-    self.setBackgroundColor(@project.status_color[:background])
-  end
-
-  def configure_cell_labels
-    project_name.text = @project.name
-    project_details.text = detail_text
-  end
-
-  def detail_text
-    return 'Building...' unless @project.last_build
-
-    "Last build: #{@project.last_build.time_ago_in_words}"
-  end
-
   def configure_favorite_button
-    @project.favorite ?
-        favorite_button.setImage(UIImage.imageNamed('star-40-green'), forState: UIControlStateNormal) :
-        favorite_button.setImage(UIImage.imageNamed('star-40'), forState: UIControlStateNormal)
+    favorite_button.setImage(UIImage.imageNamed(favorite_image), forState: UIControlStateNormal)
+  end
+
+  def favorite_image
+    @project.favorite ? 'star-40-green' : 'star-40'
+  end
+
+  def cell_color
+    send "#{@project.status}_colors"
   end
 end
