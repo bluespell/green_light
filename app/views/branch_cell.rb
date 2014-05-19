@@ -1,5 +1,6 @@
 class BranchCell < UITableViewCell
   extend IB
+  include ColorHelper
 
   attr_accessor :branch
 
@@ -16,18 +17,10 @@ class BranchCell < UITableViewCell
     last_build.text = branch.finished_at.time_ago_in_words
     branch_status.text = branch.result
 
-    if (branch.failed?)
-      branch_status_background.setBackgroundColor("FF0000".to_color)
-      setBackgroundColor("F3E2D8".to_color)
-    elsif (branch.pending?)
-      branch_status_background.setBackgroundColor("DDEFF8".to_color)
-      setBackgroundColor("EAF3F7".to_color)
-    else
-      branch_status_background.setBackgroundColor("59AF00".to_color)
-      setBackgroundColor("EAF3D8".to_color)
-    end
+    branch_status_background.setBackgroundColor color[:strong]
+    setBackgroundColor color[:light]
 
-    last_branch?(index) ? last_line_detail.hidden = true : last_line_detail.hidden = false
+    last_line_detail.hidden = last_branch?(index)
 
     self
   end
@@ -36,5 +29,9 @@ class BranchCell < UITableViewCell
 
   def last_branch?(index)
     @branch.brothers.count == index + 1
+  end
+
+  def color
+    send "#{@branch.result}_colors"
   end
 end
