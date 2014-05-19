@@ -1,6 +1,5 @@
 class ProjectCell < UITableViewCell
   extend IB
-  include TimeHelper
 
   outlet :project_name, UILabel
   outlet :project_details, UILabel
@@ -44,7 +43,7 @@ class ProjectCell < UITableViewCell
   def detail_text
     return 'Building...' unless @project.last_build
 
-    "Last build: #{time_ago_in_words(@project.last_build)}"
+    "Last build: #{@project.last_build.time_ago_in_words}"
   end
 
   def configure_favorite_button

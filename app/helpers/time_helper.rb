@@ -6,8 +6,4 @@ module TimeHelper
     date_formatter.dateFormat = SEMAPHORE_TIME_FORMAT
     date_formatter.dateFromString string
   end
-
-  def time_ago_in_words(date)
-    NSDate.dateWithTimeIntervalSinceNow(date - Time.now).timeAgoSinceNow
-  end
 end

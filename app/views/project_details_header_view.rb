@@ -12,7 +12,7 @@ class ProjectDetailsHeaderView < UIView
 
   def configure(project)
     project_name.text = project.name
-    last_build.text = time_ago_in_words(project.last_build)
+    last_build.text = project.last_build.time_ago_in_words
     project_status.text = project.master_branch.result
 
     number_of_branches.text = project.branches.count.to_s

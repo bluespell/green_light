@@ -1,6 +1,5 @@
 class BranchCell < UITableViewCell
   extend IB
-  include TimeHelper
 
   attr_accessor :branch
 
@@ -14,7 +13,7 @@ class BranchCell < UITableViewCell
     @branch = branch
 
     branch_name.text = branch.name
-    last_build.text = time_ago_in_words(branch.finished_at)
+    last_build.text = branch.finished_at.time_ago_in_words
     branch_status.text = branch.result
 
     if (branch.failed?)
