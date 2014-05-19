@@ -27,14 +27,18 @@
 @property IBOutlet UITableView * favorites_table_view;
 
 -(IBAction) viewWillAppear:(id) animated;
--(IBAction) update_favorites;
 -(IBAction) show_instructions;
+-(IBAction) update_favorites;
 
 @end
 
-@interface ProjectDetailsController: UITableViewController
--(IBAction) viewDidLoad;
+@interface ProjectDetailsController: UIViewController
+
+@property IBOutlet UIView * header;
+
+-(IBAction) viewWillAppear:(id) animated;
 -(IBAction) back:(id) sender;
+-(IBAction) setup_header;
 
 @end
 
@@ -79,12 +83,29 @@
 -(IBAction) master_branch;
 -(IBAction) status_color;
 -(IBAction) last_build;
+-(IBAction) passed_branches;
+-(IBAction) failed_branches;
 -(IBAction) color_status;
 -(IBAction) select_branch:(id) name;
 
 @end
 
 @interface Token: NSObject
+@end
+
+@interface ProjectsBuilder: NSObject
+@end
+
+@interface BranchCell: UITableViewCell
+
+@property IBOutlet UILabel * branch_name;
+@property IBOutlet UILabel * last_build;
+@property IBOutlet UILabel * branch_status;
+@property IBOutlet UIView * branch_status_background;
+@property IBOutlet UIView * last_line_detail;
+
+-(IBAction) configure:(id) branch;
+
 @end
 
 @interface ProjectCell: UITableViewCell
@@ -102,6 +123,17 @@
 
 @end
 
-@interface ProjectsBuilder: NSObject
+@interface ProjectDetailsHeaderView: UIView
+
+@property IBOutlet UILabel * project_name;
+@property IBOutlet UILabel * last_build;
+@property IBOutlet UILabel * project_status;
+@property IBOutlet UILabel * number_of_branches;
+@property IBOutlet UILabel * number_of_branches_failed;
+@property IBOutlet UILabel * number_of_branches_passed;
+@property IBOutlet UIView * project_status_background;
+
+-(IBAction) configure:(id) project;
+
 @end
 

@@ -35,8 +35,17 @@ class Project
     master_branch.finished_at
   end
 
+  def passed_branches
+    branches.where(:result).eq('passed')
+  end
+
+  def failed_branches
+    branches.where(:result).eq('failed')
+  end
+
   private
 
+  # TODO: refactor colors so projects, branches, etc, can reuse
   def color_status
     {
       :passed  => { :foreground => "E6F4CA".to_color, :background => "EAF3D8".to_color },

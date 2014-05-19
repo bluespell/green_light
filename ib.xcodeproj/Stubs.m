@@ -33,9 +33,15 @@
 @implementation Token
 @end
 
+@implementation ProjectsBuilder
+@end
+
+@implementation BranchCell
+@end
+
 @implementation ProjectCell
 @end
 
-@implementation ProjectsBuilder
+@implementation ProjectDetailsHeaderView
 @end
 

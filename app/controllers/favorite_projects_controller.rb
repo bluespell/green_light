@@ -11,12 +11,7 @@ class FavoriteProjectsController < UITableViewController
     show_instructions if @favorite_projects.count == 0
   end
 
-  def update_favorites
-    @favorite_projects = Project.favorites.to_a
-    favorites_table_view.reloadData
-  end
-
-  # Returns the number os cell
+  # Returns the number os cells
   def tableView(tableView, numberOfRowsInSection: section)
     @favorite_projects.count
   end
@@ -44,4 +39,10 @@ class FavoriteProjectsController < UITableViewController
   def show_instructions
     App.alert("\"Right swipe\" a project to favorite it")
   end
+
+  def update_favorites
+    @favorite_projects = Project.favorites.to_a
+    favorites_table_view.reloadData
+  end
+
 end

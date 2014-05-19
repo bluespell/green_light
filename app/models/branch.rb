@@ -21,4 +21,16 @@ class Branch
 
     @data[:finished_at] = time
   end
+
+  def failed?
+    result == 'failed'
+  end
+
+  def pending?
+    result == 'pending'
+  end
+
+  def brothers
+    project.branches
+  end
 end
