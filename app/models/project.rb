@@ -10,7 +10,8 @@ class Project
   has_many :branches, :dependent => :destroy
 
   def self.favorites
-    where(:favorite).eq(true)
+    where(:favorite).eq(true).
+    order { |one, two| two.last_build <=> one.last_build }.all
   end
 
   def self.any_favorite?

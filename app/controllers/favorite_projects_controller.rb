@@ -41,8 +41,7 @@ class FavoriteProjectsController < UITableViewController
   end
 
   def update_favorites
-    @favorite_projects = Project.favorites.to_a
+    @favorite_projects = Project.favorites
     favorites_table_view.reloadData
   end
-
 end
