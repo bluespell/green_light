@@ -22,6 +22,10 @@ class Project
     order { |one, two| two.last_build_or_now <=> one.last_build_or_now }.all
   end
 
+  def ordered_branches
+    branches.order { |one, two| two.finished_at_or_now <=> one.finished_at_or_now }.all
+  end
+
   def master_branch
     select_branch "master"
   end

@@ -33,4 +33,8 @@ class Branch
   def brothers
     project.branches
   end
+
+  def finished_at_or_now
+    finished_at || Time.new
+  end
 end

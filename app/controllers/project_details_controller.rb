@@ -17,7 +17,7 @@ class ProjectDetailsController < UIViewController
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
     reuse_identifier ||= 'branch_cell'
-    branch = @project.branches.to_a[indexPath.row]
+    branch = @project.ordered_branches[indexPath.row]
 
     cell = tableView.dequeueReusableCellWithIdentifier(reuse_identifier)
     cell.configure branch, indexPath.row
