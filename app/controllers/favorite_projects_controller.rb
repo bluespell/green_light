@@ -11,7 +11,6 @@ class FavoriteProjectsController < UITableViewController
     show_instructions if @favorite_projects.count == 0
   end
 
-  # Returns the number os cells
   def tableView(tableView, numberOfRowsInSection: section)
     @favorite_projects.count
   end

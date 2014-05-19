@@ -11,7 +11,7 @@ class Project
 
   def self.favorites
     where(:favorite).eq(true).
-    order { |one, two| two.last_build <=> one.last_build }.all
+    order { |one, two| two.last_build_or_now <=> one.last_build_or_now }.all
   end
 
   def self.any_favorite?
@@ -19,7 +19,7 @@ class Project
   end
 
   def self.ordered_by_last_build
-    order { |one, two| two.last_build <=> one.last_build }.all
+    order { |one, two| two.last_build_or_now <=> one.last_build_or_now }.all
   end
 
   def master_branch
@@ -42,6 +42,10 @@ class Project
 
   def failed_branches
     branches.where(:result).eq('failed')
+  end
+
+  def last_build_or_now
+    last_build || Time.new
   end
 
   private

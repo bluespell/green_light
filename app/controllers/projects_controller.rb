@@ -11,7 +11,6 @@ class ProjectsController < UITableViewController
   end
 
   def update_projects
-    # FIXME: Uninstall the app, run it. The order method is exploding for some reason
     @projects = Project.ordered_by_last_build
     projects_table_view.reloadData
   end
