@@ -24,6 +24,9 @@
 @implementation TokenController
 @end
 
+@implementation Time
+@end
+
 @implementation Branch
 @end
 

@@ -27,8 +27,8 @@
 @property IBOutlet UITableView * favorites_table_view;
 
 -(IBAction) viewWillAppear:(id) animated;
+-(IBAction) viewDidAppear:(id) animated;
 -(IBAction) show_instructions;
--(IBAction) update_favorites;
 
 @end
 
@@ -47,8 +47,8 @@
 @property IBOutlet UITabBarItem * all_projects_button;
 @property IBOutlet UITableView * projects_table_view;
 
--(IBAction) viewWillAppear:(id) animated;
--(IBAction) update_projects;
+-(IBAction) viewDidLoad;
+-(IBAction) viewDidAppear:(id) animated;
 
 @end
 
@@ -73,19 +73,28 @@
 
 @end
 
+@interface Time: NSObject
+-(IBAction) time_ago_in_words;
+
+@end
+
 @interface Branch: NSObject
 -(IBAction) started_at;
 -(IBAction) finished_at;
+-(IBAction) brothers;
+-(IBAction) finished_at_or_now;
 
 @end
 
 @interface Project: NSObject
+-(IBAction) ordered_branches;
 -(IBAction) master_branch;
--(IBAction) status_color;
+-(IBAction) status;
 -(IBAction) last_build;
 -(IBAction) passed_branches;
 -(IBAction) failed_branches;
--(IBAction) color_status;
+-(IBAction) last_build_or_now;
+-(IBAction) toggle_favorite;
 -(IBAction) select_branch:(id) name;
 
 @end
@@ -104,7 +113,7 @@
 @property IBOutlet UIView * branch_status_background;
 @property IBOutlet UIView * last_line_detail;
 
--(IBAction) configure:(id) branch;
+-(IBAction) color;
 
 @end
 
@@ -116,10 +125,9 @@
 
 -(IBAction) configure:(id) project;
 -(IBAction) handle_favorite;
--(IBAction) configure_cell_colors;
--(IBAction) configure_cell_labels;
--(IBAction) detail_text;
 -(IBAction) configure_favorite_button;
+-(IBAction) favorite_image;
+-(IBAction) cell_color;
 
 @end
 

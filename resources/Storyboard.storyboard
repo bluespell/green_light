@@ -89,7 +89,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="lI7-xq-MBZ">
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="lI7-xq-MBZ">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -130,7 +130,7 @@
         <scene sceneID="V21-DR-4VG">
             <objects>
                 <tableViewController id="OfE-ke-3Cp" customClass="FavoriteProjectsController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="o3y-1f-wZQ">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="o3y-1f-wZQ">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
@@ -147,19 +147,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96B-E9-sSB">
-                                            <rect key="frame" x="59" y="10" width="150" height="17"/>
+                                            <rect key="frame" x="59" y="10" width="107" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="150" id="hx7-bw-bTv"/>
-                                                <constraint firstAttribute="height" constant="17" id="yVO-vy-SmW"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueX-Wi-ZSI">
-                                            <rect key="frame" x="59" y="29" width="150" height="21"/>
+                                            <rect key="frame" x="59" y="33" width="94" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -178,14 +174,12 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="96B-E9-sSB" firstAttribute="leading" secondItem="Jsj-zy-F76" secondAttribute="trailing" constant="9" id="4zK-hj-SPM"/>
-                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="leading" secondItem="96B-E9-sSB" secondAttribute="leading" id="aDW-0H-zYW"/>
-                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="top" secondItem="96B-E9-sSB" secondAttribute="bottom" constant="2" id="f5i-rX-xjg"/>
-                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="bottom" secondItem="Jsj-zy-F76" secondAttribute="bottom" id="gC5-p7-8mJ"/>
-                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="trailing" secondItem="96B-E9-sSB" secondAttribute="trailing" id="hRi-7J-bHE"/>
-                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="centerY" secondItem="dgl-WX-m22" secondAttribute="centerY" id="pnb-jC-1Ix"/>
-                                        <constraint firstItem="96B-E9-sSB" firstAttribute="top" secondItem="Jsj-zy-F76" secondAttribute="top" id="qe6-By-PLR"/>
-                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="leading" secondItem="dgl-WX-m22" secondAttribute="leading" constant="10" id="rna-ey-bwA"/>
+                                        <constraint firstItem="96B-E9-sSB" firstAttribute="leading" secondItem="ueX-Wi-ZSI" secondAttribute="leading" id="6Ul-Ve-jq9"/>
+                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="leading" secondItem="dgl-WX-m22" secondAttribute="leading" constant="10" id="BVQ-mZ-LqU"/>
+                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="top" secondItem="96B-E9-sSB" secondAttribute="top" id="JDD-CJ-Um5"/>
+                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="top" secondItem="dgl-WX-m22" secondAttribute="top" constant="10" id="ngt-MR-I6k"/>
+                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="leading" secondItem="Jsj-zy-F76" secondAttribute="trailing" constant="9" id="rVa-Un-qd9"/>
+                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="bottom" secondItem="ueX-Wi-ZSI" secondAttribute="bottom" id="skZ-y9-kwC"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="0.0" colorSpace="deviceRGB"/>
@@ -224,7 +218,7 @@
         <scene sceneID="uFz-cf-dE1">
             <objects>
                 <tableViewController id="SeU-lA-bqW" customClass="ProjectsController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="4ii-jc-EGE">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="4ii-jc-EGE">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
@@ -241,19 +235,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIP-VB-ePC">
-                                            <rect key="frame" x="59" y="10" width="150" height="17"/>
+                                            <rect key="frame" x="59" y="10" width="107" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="150" id="7go-71-TWF"/>
-                                                <constraint firstAttribute="height" constant="17" id="BBO-Ot-Bgt"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpI-QP-iMj">
-                                            <rect key="frame" x="59" y="29" width="150" height="21"/>
+                                            <rect key="frame" x="59" y="33" width="94" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -272,14 +262,12 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="leading" secondItem="uYM-hK-L7w" secondAttribute="trailing" constant="9" id="BQs-I6-1xE"/>
-                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="top" secondItem="Go8-0L-Efd" secondAttribute="top" constant="10" id="D0l-bL-nCd"/>
-                                        <constraint firstItem="xpI-QP-iMj" firstAttribute="leading" secondItem="NIP-VB-ePC" secondAttribute="leading" id="UbZ-Wl-Aaj"/>
-                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="top" secondItem="uYM-hK-L7w" secondAttribute="top" id="WXm-FY-hre"/>
-                                        <constraint firstItem="xpI-QP-iMj" firstAttribute="top" secondItem="NIP-VB-ePC" secondAttribute="bottom" constant="2" id="brj-UU-CPM"/>
-                                        <constraint firstItem="xpI-QP-iMj" firstAttribute="trailing" secondItem="NIP-VB-ePC" secondAttribute="trailing" id="iPM-Kj-2oY"/>
-                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="leading" secondItem="Go8-0L-Efd" secondAttribute="leading" constant="59" id="osI-cD-2T0"/>
-                                        <constraint firstItem="xpI-QP-iMj" firstAttribute="bottom" secondItem="uYM-hK-L7w" secondAttribute="bottom" id="yXb-Z0-ADk"/>
+                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="top" secondItem="NIP-VB-ePC" secondAttribute="top" id="10I-ca-Buu"/>
+                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="leading" secondItem="xpI-QP-iMj" secondAttribute="leading" id="86B-dy-wpV"/>
+                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="bottom" secondItem="xpI-QP-iMj" secondAttribute="bottom" id="Pus-hA-xLn"/>
+                                        <constraint firstItem="xpI-QP-iMj" firstAttribute="leading" secondItem="uYM-hK-L7w" secondAttribute="trailing" constant="9" id="V7n-Sf-u4Z"/>
+                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="top" secondItem="Go8-0L-Efd" secondAttribute="top" constant="10" id="ZEt-Ts-205"/>
+                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="leading" secondItem="Go8-0L-Efd" secondAttribute="leading" constant="10" id="gue-Xg-dgc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="0.0" colorSpace="deviceRGB"/>
@@ -440,6 +428,9 @@
                                         <rect key="frame" x="15" y="19" width="10" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Xaz-fZ-7J6"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
