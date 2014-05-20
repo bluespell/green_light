@@ -6,13 +6,13 @@ class ProjectsController < UITableViewController
 
   attr_accessor :projects, :selected_project
 
-  def viewWillAppear(animated)
-    update_projects
+  def viewDidLoad
+    @projects = Project.ordered_by_last_build
   end
 
-  def update_projects
-    @projects = Project.ordered_by_last_build
-    projects_table_view.reloadData
+  def viewDidAppear(animated)
+    # Grand Central Dispatch (updates favorite projects)
+    Dispatch::Queue.main.async { projects_table_view.reloadData }
   end
 
   # Returns the number os cells

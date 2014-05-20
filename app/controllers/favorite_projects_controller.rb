@@ -7,8 +7,14 @@ class FavoriteProjectsController < UITableViewController
   attr_accessor :favorite_projects, :selected_project
 
   def viewWillAppear(animated)
-    update_favorites
+    @favorite_projects = Project.favorites
+  end
+
+  def viewDidAppear(animated)
     show_instructions if @favorite_projects.count == 0
+
+    # Grand Central Dispatch (updates favorite projects)
+    Dispatch::Queue.main.async { favorites_table_view.reloadData }
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
@@ -37,10 +43,5 @@ class FavoriteProjectsController < UITableViewController
 
   def show_instructions
     App.alert("\"Right swipe\" a project to favorite it")
-  end
-
-  def update_favorites
-    @favorite_projects = Project.favorites
-    favorites_table_view.reloadData
   end
 end
