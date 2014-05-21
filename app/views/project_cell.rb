@@ -7,11 +7,10 @@ class ProjectCell < UITableViewCell
   outlet :project_details, UILabel
   outlet :favorite_button, UIButton
 
-  attr_accessor :project, :selected_background_view_color, :table_view
+  attr_accessor :project, :selected_background_view_color
 
   def configure(project)
     @project = project
-    @table_view = table_view
 
     # Cell selected color
     @selected_background_view_color ||= UIView.alloc.init

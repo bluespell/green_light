@@ -42,6 +42,6 @@ class FavoriteProjectsController < UITableViewController
   private
 
   def show_instructions
-    App.alert("\"Right swipe\" a project to favorite it")
+    App.alert("Favorite a project by tapping its star :)")
   end
 end
