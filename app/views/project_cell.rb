@@ -1,7 +1,6 @@
 class ProjectCell < UITableViewCell
   extend IB
   include ColorHelper
-  include TimeHelper
 
   outlet :project_name, UILabel
   outlet :project_details, UILabel
@@ -20,8 +19,8 @@ class ProjectCell < UITableViewCell
     # Cell background color
     setBackgroundColor cell_color[:light]
 
-    project_name.text = @project.name
-    project_details.text = building_date project.master_branch
+    project_name.text = project.name
+    project_details.text = project.master_branch.human_building_date
 
     configure_favorite_button
 

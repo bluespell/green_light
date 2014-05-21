@@ -1,4 +1,6 @@
 class ProjectsBuilder
+  extend TimeHelper
+
   def self.build!(projects)
     Project.destroy_all
 
@@ -10,13 +12,17 @@ class ProjectsBuilder
       })
 
       raw_project["branches"].each do |branch|
-        project.branches.create({
-          :name         => branch["branch_name"],
-          :result       => branch["result"],
-          :project_name => branch["project_name"],
-          :started_at   => branch["started_at"],
-          :finished_at  => branch["finished_at"]
+        branch = project.branches.create({
+          :name          => branch["branch_name"],
+          :result        => branch["result"],
+          :project_name  => branch["project_name"],
+          :started_at    => branch["started_at"],
+          :finished_at   => branch["finished_at"],
+          :building_date => time_from_string(branch["finished_at"])
         })
+
+        branch.human_building_date = building_date(branch)
+        branch.save
       end
 
       project.save

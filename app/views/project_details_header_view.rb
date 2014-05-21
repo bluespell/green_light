@@ -1,7 +1,6 @@
 class ProjectDetailsHeaderView < UIView
   extend IB
   include ColorHelper
-  include TimeHelper
 
   outlet :project_name, UILabel
   outlet :last_build, UILabel
@@ -13,7 +12,7 @@ class ProjectDetailsHeaderView < UIView
 
   def configure(project)
     project_name.text = project.name
-    last_build.text = building_date project.master_branch
+    last_build.text = project.master_branch.human_building_date
     project_status.text = project.master_branch.result
 
     number_of_branches.text = project.branches.count.to_s

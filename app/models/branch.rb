@@ -3,10 +3,11 @@ class Branch
   include MotionModel::ArrayModelAdapter
   include TimeHelper
 
-  columns :name        => :string,
-          :result      => :string,
-          :started_at  => :date,
-          :finished_at => :date
+  columns :name                => :string,
+          :result              => :string,
+          :started_at          => :date,
+          :finished_at         => :date,
+          :human_building_date => :string
 
   belongs_to :project
 
