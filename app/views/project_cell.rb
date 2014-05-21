@@ -7,10 +7,11 @@ class ProjectCell < UITableViewCell
   outlet :project_details, UILabel
   outlet :favorite_button, UIButton
 
-  attr_accessor :project, :selected_background_view_color
+  attr_accessor :project, :selected_background_view_color, :table_view
 
   def configure(project)
     @project = project
+    @table_view = table_view
 
     # Cell selected color
     @selected_background_view_color ||= UIView.alloc.init
@@ -32,6 +33,11 @@ class ProjectCell < UITableViewCell
   def handle_favorite
     @project.toggle_favorite
     configure_favorite_button
+
+    # superview = UITableViewWrapperView
+    # .superview = UITableView
+    # .dataSource = ProjectsController / FavoriteProjectsController
+    superview.superview.dataSource.tabBarController.set_badge_count
   end
 
   private
