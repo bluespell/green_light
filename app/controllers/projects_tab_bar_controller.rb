@@ -2,9 +2,6 @@
 # Has a back button that shows the TokenController
 class ProjectsTabBarController < UITabBarController
 
-  # TODO: if the "TOKEN" button is pressed, show a message to users:
-  # Are you sure you want to proceed? All projects will be lost or something
-
   def viewDidLoad
     self.delegate = self
     self.navigationItem.title = view_title
@@ -29,7 +26,6 @@ class ProjectsTabBarController < UITabBarController
     Project.any_favorite? ? 'Favorites' : 'All Projects'
   end
 
-  # TODO NSNotificationCenter
   def set_badge_count
     self.viewControllers[0].tabBarItem.setBadgeValue project_counter(:all)
     self.viewControllers[1].tabBarItem.setBadgeValue project_counter(:favorites)
@@ -41,5 +37,19 @@ class ProjectsTabBarController < UITabBarController
     result = Project.send method
 
     result.count > 0 ? result.count.to_s : nil
+  end
+
+  def handle_token_button
+    alert = BW::UIAlertView.new({ title: 'Do you want to change the Token?',
+                                  message: '(Current projects will be replaced)',
+                                  buttons: ['Cancel', 'OK'],
+                                  cancel_button_index: 0 }) do |a|
+      pops_view unless a.clicked_button.cancel?
+    end
+    alert.show
+  end
+
+  def pops_view
+    self.navigationController.popViewControllerAnimated(true)
   end
 end

@@ -58,6 +58,7 @@
 -(IBAction) view_title;
 -(IBAction) set_badge_count;
 -(IBAction) project_counter:(id) method;
+-(IBAction) handle_token_button;
 
 @end
 
@@ -125,6 +126,7 @@
 
 -(IBAction) configure:(id) project;
 -(IBAction) handle_favorite;
+-(IBAction) parent_controller;
 -(IBAction) configure_favorite_button;
 -(IBAction) favorite_image;
 -(IBAction) cell_color;
