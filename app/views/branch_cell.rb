@@ -1,7 +1,6 @@
 class BranchCell < UITableViewCell
   extend IB
   include ColorHelper
-  include TimeHelper
 
   attr_accessor :branch
 
@@ -15,7 +14,7 @@ class BranchCell < UITableViewCell
     @branch = branch
 
     branch_name.text = branch.name
-    last_build.text = building_date branch
+    last_build.text = branch.human_building_date
     branch_status.text = branch.result
 
     branch_status_background.setBackgroundColor color[:strong]
@@ -29,10 +28,14 @@ class BranchCell < UITableViewCell
   private
 
   def last_branch?(index)
-    @branch.brothers.count == index + 1
+    count == index + 1
   end
 
   def color
     send "#{@branch.result}_colors"
+  end
+
+  def count
+    @count ||= @branch.brothers.count
   end
 end
