@@ -13,12 +13,12 @@ class ProjectCell < UITableViewCell
     @project = project
 
     # Cell selected color
-    @selected_background_view_color ||= UIView.alloc.init
-    @selected_background_view_color.setBackgroundColor cell_color[:strong]
-    self.setSelectedBackgroundView @selected_background_view_color
+    @selected_background_view_color = UIView.alloc.init
+    @selected_background_view_color.setBackgroundColor cell_color[:medium]
+    setSelectedBackgroundView @selected_background_view_color
 
     # Cell background color
-    self.setBackgroundColor cell_color[:light]
+    setBackgroundColor cell_color[:light]
 
     project_name.text = @project.name
     project_details.text = building_date project.master_branch
@@ -36,10 +36,19 @@ class ProjectCell < UITableViewCell
     # superview = UITableViewWrapperView
     # .superview = UITableView
     # .dataSource = ProjectsController / FavoriteProjectsController
-    superview.superview.dataSource.tabBarController.set_badge_count
+    if parent_controller.is_a?(FavoriteProjectsController)
+      parent_controller.projects = Project.favorites
+      Dispatch::Queue.main.async { superview.superview.reloadData }
+    end
+
+    parent_controller.tabBarController.set_badge_count
   end
 
   private
+
+  def parent_controller
+    superview.superview.dataSource
+  end
 
   def configure_favorite_button
     favorite_button.setImage(UIImage.imageNamed(favorite_image), forState: UIControlStateNormal)

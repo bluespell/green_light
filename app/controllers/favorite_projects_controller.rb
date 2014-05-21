@@ -4,33 +4,33 @@ class FavoriteProjectsController < UITableViewController
   outlet :favorite_projects_button, UITabBarItem
   outlet :favorites_table_view, UITableView
 
-  attr_accessor :favorite_projects, :selected_project
+  attr_accessor :projects, :selected_project
 
   def viewWillAppear(animated)
-    @favorite_projects = Project.favorites
+    @projects = Project.favorites
   end
 
   def viewDidAppear(animated)
-    show_instructions if @favorite_projects.count == 0
+    show_instructions if @projects.count == 0
 
     # Grand Central Dispatch (updates favorite projects)
     Dispatch::Queue.main.async { favorites_table_view.reloadData }
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
-    @favorite_projects.count
+    @projects.count
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
     reuse_identifier ||= 'project_cell'
 
     cell = tableView.dequeueReusableCellWithIdentifier(reuse_identifier)
-    cell.configure(@favorite_projects[indexPath.row])
+    cell.configure(@projects[indexPath.row])
   end
 
   # Calls the ProjectDetailsController when a project is tapped (selected)
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
-    @selected_project = @favorite_projects[indexPath.row]
+    @selected_project = @projects[indexPath.row]
     performSegueWithIdentifier('push_project_details_from_fav', sender: nil)
   end
 
