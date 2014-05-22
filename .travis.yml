@@ -2,10 +2,11 @@ language: objective-c
 gemfile:
   - Gemfile
 before_script:
+  - export LANG=en_US.UTF-8
+  - sudo chown -R travis ~/Library/RubyMotion
+  - mkdir -p ~/Library/RubyMotion/build
   - "bundle exec pod setup --silent"
   - "bundle exec rake pod:install -s"
-  - export LANG=en_US.UTF-8
-script: 
+script:
   - bundle exec rake spec
   - bundle exec rake frank
-bump: 2
