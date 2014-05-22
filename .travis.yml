@@ -1,0 +1,12 @@
+language: objective-c
+before_install:
+    - (ruby --version)
+    - sudo chown -R travis ~/Library/RubyMotion
+    - mkdir -p ~/Library/RubyMotion/build
+    - sudo motion update
+script:
+    - bundle install
+    - bundle exec rake pod:install
+    - bundle exec rake clean
+    - bundle exec rake spec
+    - bundle exec rake frank
