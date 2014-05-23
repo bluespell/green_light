@@ -59,6 +59,7 @@
 -(IBAction) set_badge_count;
 -(IBAction) project_counter:(id) method;
 -(IBAction) handle_token_button;
+-(IBAction) pops_view;
 
 @end
 
@@ -115,6 +116,7 @@
 @property IBOutlet UIView * last_line_detail;
 
 -(IBAction) color;
+-(IBAction) count;
 
 @end
 
