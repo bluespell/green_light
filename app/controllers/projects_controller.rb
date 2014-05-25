@@ -22,9 +22,11 @@ class ProjectsController < UITableViewController
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
     reuse_identifier ||= 'project_cell'
+    tableView.dequeueReusableCellWithIdentifier(reuse_identifier)
+  end
 
-    cell = tableView.dequeueReusableCellWithIdentifier(reuse_identifier)
-    cell.configure(@projects[indexPath.row])
+  def tableView(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)
+    cell.configure @projects[indexPath.row]
   end
 
   # Calls the ProjectDetailsController when a project is tapped (selected)
