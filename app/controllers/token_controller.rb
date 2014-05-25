@@ -61,4 +61,8 @@ class TokenController < UIViewController
     self.view.frame = CGRectOffset(self.view.frame, 0, distance)
     UIView.commitAnimations
   end
+
+  def open_token_instructions
+    UIApplication.sharedApplication.openURL NSURL.URLWithString 'https://semaphoreapp.com/docs/api_authentication.html'
+  end
 end

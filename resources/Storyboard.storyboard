@@ -17,15 +17,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0J-mx-Tnf" userLabel="Container View">
-                                <rect key="frame" x="0.0" y="184" width="320" height="136"/>
+                                <rect key="frame" x="0.0" y="167" width="320" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvr-UB-EuS" userLabel="Submit Button">
-                                        <rect key="frame" x="20" y="72" width="280" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvr-UB-EuS" userLabel="Submit Button">
+                                        <rect key="frame" x="20" y="65" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="Qi6-lC-yOo"/>
+                                            <constraint firstAttribute="height" constant="44" id="Xr3-sW-QAL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Submit">
@@ -37,34 +37,51 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Type your token here" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xjx-Bl-1aM" userLabel="Token Field">
-                                        <rect key="frame" x="20" y="20" width="280" height="44"/>
+                                        <rect key="frame" x="20" y="13" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="9GA-wh-V5b"/>
-                                        </constraints>
                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRd-HH-q4W">
+                                        <rect key="frame" x="20" y="126" width="280" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="MZ2-5v-KIW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
+                                        <state key="normal" title="How to find the authentication token?">
+                                            <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="open_token_instructions" destination="Odp-pk-iHX" eventType="touchUpInside" id="PMV-vd-cc0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Tvr-UB-EuS" secondAttribute="bottom" constant="20" symbolic="YES" id="Pnw-Ku-LmM"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xjx-Bl-1aM" secondAttribute="trailing" constant="20" symbolic="YES" id="ZKi-nV-LzX"/>
-                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="trailing" secondItem="Xjx-Bl-1aM" secondAttribute="trailing" id="aWT-tL-poc"/>
-                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="top" secondItem="Xjx-Bl-1aM" secondAttribute="bottom" constant="8" symbolic="YES" id="drF-qI-OSV"/>
-                                    <constraint firstItem="Xjx-Bl-1aM" firstAttribute="leading" secondItem="d0J-mx-Tnf" secondAttribute="leading" constant="20" symbolic="YES" id="gpZ-Js-4fg"/>
-                                    <constraint firstItem="Xjx-Bl-1aM" firstAttribute="top" secondItem="d0J-mx-Tnf" secondAttribute="top" constant="20" symbolic="YES" id="grf-sV-Iaf"/>
-                                    <constraint firstAttribute="width" constant="320" id="n6P-js-JTu"/>
-                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="leading" secondItem="Xjx-Bl-1aM" secondAttribute="leading" id="n8Q-Ao-MNS"/>
+                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="leading" secondItem="HRd-HH-q4W" secondAttribute="leading" id="07k-mp-JKp"/>
+                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="trailing" secondItem="HRd-HH-q4W" secondAttribute="trailing" id="0UU-v8-wCd"/>
+                                    <constraint firstAttribute="trailing" secondItem="HRd-HH-q4W" secondAttribute="trailing" constant="20" symbolic="YES" id="Fn3-bk-Srb"/>
+                                    <constraint firstAttribute="height" constant="170" id="HJi-kT-yEJ"/>
+                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="top" secondItem="Xjx-Bl-1aM" secondAttribute="bottom" constant="8" symbolic="YES" id="IY9-e9-5gg"/>
+                                    <constraint firstItem="Xjx-Bl-1aM" firstAttribute="top" secondItem="d0J-mx-Tnf" secondAttribute="top" constant="13" id="VZW-IN-lYV"/>
+                                    <constraint firstItem="HRd-HH-q4W" firstAttribute="top" secondItem="Tvr-UB-EuS" secondAttribute="bottom" constant="17" id="dDU-c6-BBG"/>
+                                    <constraint firstItem="Xjx-Bl-1aM" firstAttribute="leading" secondItem="d0J-mx-Tnf" secondAttribute="leading" constant="20" id="jIP-eg-tls"/>
+                                    <constraint firstAttribute="bottom" secondItem="HRd-HH-q4W" secondAttribute="bottom" constant="14" id="mek-yu-IsH"/>
+                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="trailing" secondItem="Xjx-Bl-1aM" secondAttribute="trailing" id="rpl-XI-iw9"/>
+                                    <constraint firstItem="Tvr-UB-EuS" firstAttribute="leading" secondItem="Xjx-Bl-1aM" secondAttribute="leading" id="xkA-QV-oCg"/>
+                                    <constraint firstAttribute="width" constant="320" id="y6T-1q-Xqm"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="d0J-mx-Tnf" secondAttribute="centerY" id="gFe-u9-0Cv"/>
-                            <constraint firstAttribute="centerX" secondItem="d0J-mx-Tnf" secondAttribute="centerX" id="taY-wC-CLi"/>
+                            <constraint firstAttribute="centerX" secondItem="d0J-mx-Tnf" secondAttribute="centerX" id="l0v-R0-7TY"/>
+                            <constraint firstAttribute="centerY" secondItem="d0J-mx-Tnf" secondAttribute="centerY" id="sf3-8r-E6I"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Token" id="iPH-jd-rUL"/>
@@ -627,6 +644,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Sft-zg-YLZ"/>
+        <segue reference="2we-Ce-JtI"/>
     </inferredMetricsTieBreakers>
 </document>

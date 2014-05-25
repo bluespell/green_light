@@ -72,6 +72,7 @@
 -(IBAction) textFieldDidEndEditing:(id) textField;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) login:(id) sender;
+-(IBAction) open_token_instructions;
 
 @end
 
