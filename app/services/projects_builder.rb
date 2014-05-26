@@ -21,7 +21,6 @@ class ProjectsBuilder
           :building_date => time_from_string(branch["finished_at"])
         })
 
-        branch.human_building_date = building_date(branch)
         branch.save
       end
 

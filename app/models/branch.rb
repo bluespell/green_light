@@ -6,8 +6,7 @@ class Branch
   columns :name                => :string,
           :result              => :string,
           :started_at          => :date,
-          :finished_at         => :date,
-          :human_building_date => :string
+          :finished_at         => :date
 
   belongs_to :project
 
@@ -33,6 +32,12 @@ class Branch
 
   def brothers
     project.branches
+  end
+
+  def human_building_date
+    return 'Building...' unless finished_at
+
+    MHPrettyDate.prettyDateFromDate(finished_at, withFormat: MHPrettyDateLongRelativeTime)
   end
 
   def finished_at_or_now
