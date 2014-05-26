@@ -1,6 +1,6 @@
 class BranchCell < UITableViewCell
   extend IB
-  include ColorHelper
+  include ColorHelper, LayoutHelper
 
   attr_accessor :branch
 
@@ -14,13 +14,14 @@ class BranchCell < UITableViewCell
     @branch = branch
 
     branch_name.text = branch.name
-    last_build.text = branch.human_building_date
     branch_status.text = branch.result
-
     branch_status_background.setBackgroundColor color[:strong]
-    setBackgroundColor color[:light]
+    inset_shadow branch_status_background
 
+    last_build.text = branch.human_building_date
     last_line_detail.hidden = last_branch?(index)
+
+    setBackgroundColor color[:light]
 
     self
   end

@@ -6,7 +6,7 @@ class ProjectsTabBarController < UITabBarController
     self.delegate = self
     self.navigationItem.title = view_title
     self.viewControllers[0].all_projects_button.image = UIImage.imageNamed('menu-25')
-
+    tabBar.setTintColor '4A4A4A'.to_color
     self.selectedIndex = 1 if Project.any_favorite?
 
     set_badge_count
@@ -40,7 +40,7 @@ class ProjectsTabBarController < UITabBarController
   end
 
   def handle_token_button
-    alert = BW::UIAlertView.new({ title: 'Do you want to change the Token?',
+    alert = BW::UIAlertView.new({ title: 'Do you want to change the token?',
                                   message: '(Current projects will be replaced)',
                                   buttons: ['Cancel', 'OK'],
                                   cancel_button_index: 0 }) do |a|

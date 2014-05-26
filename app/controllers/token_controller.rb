@@ -23,7 +23,7 @@ class TokenController < UIViewController
   end
 
   def login(sender)
-    return App.alert("Your token can't be empty") if token_field.text.empty?
+    return App.alert("The token can't be empty") if token_field.text.empty?
 
     token_field.resignFirstResponder
 
