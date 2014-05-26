@@ -17,19 +17,19 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
-  - DateTools (1.2.0)
+  - MHPrettyDate (1.1.1)
   - SVProgressHUD (1.0)
   - YIInnerShadowView (1.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.1.0)
-  - DateTools (~> 1.2.0)
+  - MHPrettyDate (~> 1.1.1)
   - SVProgressHUD (~> 1.0)
   - YIInnerShadowView (~> 1.0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 7c33510b46f994bc75b75c6e63c1d83414ca40f2
-  DateTools: 1765514cd526b2c2ab491b7747df67e0a82e97c1
+  MHPrettyDate: d9f42f2ec3dfece6352f18ac77aa33312174e09e
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   YIInnerShadowView: 94e77925bb9096a9c5f9575d26925c097ce3a4da
 

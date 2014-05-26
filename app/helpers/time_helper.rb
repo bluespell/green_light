@@ -7,6 +7,6 @@ module TimeHelper
   def building_date(branch)
     return 'Building...' unless branch.finished_at
 
-    branch.finished_at.time_ago_in_words
+    MHPrettyDate.prettyDateFromDate(branch.finished_at, withFormat: MHPrettyDateLongRelativeTime)
   end
 end
