@@ -17,17 +17,17 @@ class AppDelegate
     write_model_data
   end
 
-  private
-
-  def projects
-    { Project => "projects.dat", Branch => "branches.dat", Token => "tokens.dat" }
+  def write_model_data
+    projects.each { |project, file| project.serialize_to_file file }
   end
 
   def load_model_data
     projects.each { |project, file| project.deserialize_from_file file }
   end
 
-  def write_model_data
-    projects.each { |project, file| project.serialize_to_file file }
+  private
+
+  def projects
+    { Project => "projects.dat", Branch => "branches.dat", Token => "tokens.dat" }
   end
 end

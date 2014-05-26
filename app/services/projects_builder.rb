@@ -26,6 +26,8 @@ class ProjectsBuilder
       end
 
       project.save
+
+      App.shared.delegate.write_model_data
     end
   end
 end
