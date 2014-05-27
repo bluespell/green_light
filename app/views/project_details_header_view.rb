@@ -25,11 +25,5 @@ class ProjectDetailsHeaderView < UIView
 
     project_status_background.setBackgroundColor send("#{project_status.text}_colors")[:strong]
     inset_shadow project_status_background
-
-    setBackgroundColor cell_color[:light]
-  end
-
-  def cell_color
-    send "#{@project.status}_colors"
   end
 end
