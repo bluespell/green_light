@@ -5,23 +5,30 @@ module LayoutHelper
   #  - if and only if there isn't one already set
   #  - if and only if the device is not an iPhone 4 (laggy)
   def inset_shadow(view)
+    @view = view
 
-    if !has_inset?(view) && !iphone_4?
-      inset_shadow = YIInnerShadowView.alloc.initWithFrame view.bounds
+    if inset?
+      inset_shadow = YIInnerShadowView.alloc.initWithFrame @view.bounds
       inset_shadow.setShadowRadius 1.5
       inset_shadow.setShadowMask YIInnerShadowMaskTop
       inset_shadow.layer.setCornerRadius 5
       inset_shadow.layer.setMasksToBounds true
       inset_shadow.tag = INSET_SHADOW_TAG
 
-      view.addSubview inset_shadow
+      @view.addSubview inset_shadow
     end
   end
 
   private
 
-  def has_inset?(view)
-    view.viewWithTag INSET_SHADOW_TAG
+  attr_accessor :view
+
+  def inset?
+    !has_inset? && !iphone_4?
+  end
+
+  def has_inset?
+    @view.viewWithTag INSET_SHADOW_TAG
   end
 
   # iOS 7 compatible devices:
