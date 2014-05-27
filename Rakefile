@@ -14,9 +14,14 @@ Motion::Project::App.setup do |app|
   app.name = 'green_light'
   app.device_family = [:iphone, :ipad]
 
+  # iOS 7 > 75% adoption (January, 2014)
+  app.sdk_version = '7.1'
+  app.deployment_target = '7.0'
+
   app.pods do
     dependency 'SVProgressHUD', '~> 1.0'
     dependency 'YIInnerShadowView', '~> 1.0.1'
     dependency 'MHPrettyDate', '~> 1.1.1'
+    dependency 'GBDeviceInfo', '~> 2.2.6'
   end
 end
