@@ -1,5 +1,4 @@
 module LayoutHelper
-  include Constants
 
   # Adds a inset shadow effect in the given view
   #  - if and only if there isn't one already set
@@ -13,7 +12,7 @@ module LayoutHelper
       inset_shadow.setShadowMask YIInnerShadowMaskTop
       inset_shadow.layer.setCornerRadius 5
       inset_shadow.layer.setMasksToBounds true
-      inset_shadow.tag = INSET_SHADOW_TAG
+      inset_shadow.tag = :inset_tag.object_id
 
       @view.addSubview inset_shadow
     end
@@ -28,7 +27,7 @@ module LayoutHelper
   end
 
   def has_inset?
-    @view.viewWithTag INSET_SHADOW_TAG
+    @view.viewWithTag :inset_tag.object_id
   end
 
   # iOS 7 compatible devices:
