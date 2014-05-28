@@ -37,7 +37,7 @@ class Branch
   def human_building_date
     return 'Building...' unless finished_at
 
-    MHPrettyDate.prettyDateFromDate(finished_at, withFormat: MHPrettyDateLongRelativeTime)
+    finished_at.prettyTimestampSinceNow
   end
 
   def finished_at_or_now
