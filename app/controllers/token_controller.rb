@@ -10,14 +10,6 @@ class TokenController < UIViewController
     performSegueWithIdentifier("push_projects", sender: nil) unless token_field.text.empty?
   end
 
-  def textFieldDidBeginEditing(textField)
-    animate_text_field textField, :direction => :up
-  end
-
-  def textFieldDidEndEditing(textField)
-    animate_text_field textField, :direction => :down
-  end
-
   def textFieldShouldReturn(textField)
     textField.resignFirstResponder
   end
@@ -44,22 +36,6 @@ class TokenController < UIViewController
         App.alert("Could not validate the token")
       end
     end
-  end
-
-  private
-
-  def animate_text_field(text_field, opts={})
-    distance  = opts.fetch :distance, 80
-    duration  = opts.fetch :duration, 0.3
-    direction = opts.fetch :direction, :up
-
-    distance *= (direction == :up ? -1 : 1)
-
-    UIView.beginAnimations("anim", context: nil)
-    UIView.animationBeginsFromCurrentState = true
-    UIView.animationDuration = duration
-    self.view.frame = CGRectOffset(self.view.frame, 0, distance)
-    UIView.commitAnimations
   end
 
   def open_token_instructions
