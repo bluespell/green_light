@@ -26,9 +26,11 @@
 @property IBOutlet UITabBarItem * favorite_projects_button;
 @property IBOutlet UITableView * favorites_table_view;
 
+-(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) show_instructions;
+-(IBAction) refresh_projects;
 
 @end
 
@@ -49,6 +51,7 @@
 
 -(IBAction) viewDidLoad;
 -(IBAction) viewDidAppear:(id) animated;
+-(IBAction) refresh_projects;
 
 @end
 
@@ -84,6 +87,7 @@
 @end
 
 @interface Project: NSObject
+-(IBAction) before_save:(id) sender;
 -(IBAction) ordered_branches;
 -(IBAction) master_branch;
 -(IBAction) status;

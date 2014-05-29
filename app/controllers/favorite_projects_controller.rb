@@ -6,6 +6,10 @@ class FavoriteProjectsController < UITableViewController
 
   attr_accessor :projects, :selected_project
 
+  def viewDidLoad
+    self.refreshControl.addTarget self, action: :refresh_projects, forControlEvents: UIControlEventValueChanged
+  end
+
   def viewWillAppear(animated)
     @projects = Project.favorites
   end
@@ -45,5 +49,22 @@ class FavoriteProjectsController < UITableViewController
 
   def show_instructions
     App.alert("Favorite a project by tapping its star :)")
+  end
+
+  def refresh_projects
+    Semaphore.projects(Token.value) do |response|
+
+      if response.success?
+        # FIXME should update only the project branches -- the way it is now, we lost the favorite projects
+        ProjectsBuilder.build! response.object
+        @projects = Project.favorites
+        Dispatch::Queue.main.async { favorites_table_view.reloadData }
+
+        self.refreshControl.endRefreshing
+
+      elsif response.failure?
+        App.alert("Could not refresh projects")
+      end
+    end
   end
 end

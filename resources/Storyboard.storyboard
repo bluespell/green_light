@@ -218,6 +218,9 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="T45-8p-q2N"/>
                     <navigationItem key="navigationItem" title="Favorites" id="bIF-lZ-9e4"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ZGU-sw-TVn">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <connections>
                         <outlet property="favorite_projects_button" destination="T45-8p-q2N" id="Eqa-iB-huN"/>
                         <outlet property="favorites_table_view" destination="o3y-1f-wZQ" id="ByY-Rl-mqs"/>
@@ -306,6 +309,9 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="All" id="SZl-Bq-U9R"/>
                     <navigationItem key="navigationItem" title="Projects" id="Ln1-iH-dUO"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="dBK-ur-Knq">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <connections>
                         <outlet property="all_projects_button" destination="SZl-Bq-U9R" id="KIs-UF-NUx"/>
                         <outlet property="projects_table_view" destination="4ii-jc-EGE" id="avD-bK-Gc8"/>

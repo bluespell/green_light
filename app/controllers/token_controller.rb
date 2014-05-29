@@ -23,7 +23,7 @@ class TokenController < UIViewController
     SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
 
     # TODO: refactoring: single class to handle API calls
-    Semaphore.login(token_field.text) do |response|
+    Semaphore.projects(token_field.text) do |response|
       if response.success?
         Token.create(:value => token_field.text)
         ProjectsBuilder.build! response.object
