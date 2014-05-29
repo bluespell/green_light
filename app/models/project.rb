@@ -5,13 +5,14 @@ class Project
   columns :semaphore_id  => :integer,
           :name          => :string,
           :hash_id       => :string,
-          :favorite      => { :type => :boolean, :default => false }
+          :favorite      => { :type => :boolean, :default => false },
+          :last_build_cache => :time
 
   has_many :branches, :dependent => :destroy
 
   def self.favorites
     where(:favorite).eq(true).
-    order { |one, two| two.last_build_or_now <=> one.last_build_or_now }.all
+    order { |one, two| two.last_build_cache <=> one.last_build_cache }.all
   end
 
   def self.any_favorite?
@@ -19,7 +20,13 @@ class Project
   end
 
   def self.ordered_by_last_build
-    order { |one, two| two.last_build_or_now <=> one.last_build_or_now }.all
+    order { |one, two| two.last_build_cache <=> one.last_build_cache }.all
+  end
+
+  def before_save(sender)
+    @data[:last_build_cache] = master_branch ? last_build_or_now : Time.new
+
+    true
   end
 
   def ordered_branches
