@@ -15,9 +15,9 @@
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 -(IBAction) applicationDidEnterBackground:(id) application;
--(IBAction) projects;
--(IBAction) load_model_data;
 -(IBAction) write_model_data;
+-(IBAction) load_model_data;
+-(IBAction) projects;
 
 @end
 
@@ -68,16 +68,9 @@
 @property IBOutlet UITextField * token_field;
 
 -(IBAction) viewDidLoad;
--(IBAction) textFieldDidBeginEditing:(id) textField;
--(IBAction) textFieldDidEndEditing:(id) textField;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) login:(id) sender;
 -(IBAction) open_token_instructions;
-
-@end
-
-@interface Time: NSObject
--(IBAction) time_ago_in_words;
 
 @end
 
@@ -85,6 +78,7 @@
 -(IBAction) started_at;
 -(IBAction) finished_at;
 -(IBAction) brothers;
+-(IBAction) human_building_date;
 -(IBAction) finished_at_or_now;
 
 @end
