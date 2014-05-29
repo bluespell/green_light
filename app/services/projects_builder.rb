@@ -20,8 +20,6 @@ class ProjectsBuilder
           :finished_at   => branch["finished_at"],
           :building_date => time_from_string(branch["finished_at"])
         })
-
-        branch.save
       end
 
       project.save
