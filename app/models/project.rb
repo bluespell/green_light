@@ -1,48 +1,17 @@
-class Project
-  include MotionModel::Model
-  include MotionModel::ArrayModelAdapter
+class Project < CDQManagedObject
 
-  columns :semaphore_id  => :integer,
-          :name          => :string,
-          :hash_id       => :string,
-          :favorite      => { :type => :boolean, :default => false },
-          :last_build_cache => :time
-
-  has_many :branches, :dependent => :destroy
-
-  def self.favorites
-    where(:favorite).eq(true).
-    order { |one, two| two.last_build_cache <=> one.last_build_cache }.all
-  end
-
-  def self.any_favorite?
-    favorites.count > 0
-  end
-
-  def self.ordered_by_last_build
-    order { |one, two| two.last_build_cache <=> one.last_build_cache }.all
-  end
-
-  def before_save(sender)
-    @data[:last_build_cache] = master_branch ? last_build_or_now : Time.new
-
-    true
-  end
-
-  def ordered_branches
-    branches.order { |one, two| two.finished_at_or_now <=> one.finished_at_or_now }.all
-  end
-
-  def master_branch
-    select_branch "master"
-  end
+  scope :favorites, where(:favorite).eq(1).sort_by(:last_build_cache, order: :descending)
 
   def status
     master_branch.result
   end
 
   def last_build
-    master_branch.finished_at
+    master_branch ? master_branch.finished_at : Time.new
+  end
+
+  def master_branch
+    branches.where(:name).eq('master').first
   end
 
   def passed_branches
@@ -53,17 +22,16 @@ class Project
     branches.where(:result).eq('failed')
   end
 
-  def last_build_or_now
-    last_build || Time.new
+  def ordered_branches
+    branches.sort_by(:finished_at, order: :descending)
   end
 
+  #FIXME: toggle_favorite is not working
   def toggle_favorite
-    @data[:favorite] = !@data[:favorite]
+    favorite = 1
   end
 
-  private
-
-  def select_branch(name)
-    branches.where(:name).eq(name).first
+  def self.any_favorite?
+    favorites.count > 0
   end
 end

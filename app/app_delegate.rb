@@ -1,6 +1,9 @@
 class AppDelegate
+  include CDQ
+
   def application(application, didFinishLaunchingWithOptions:launchOptions)
-    load_model_data
+    cdq.setup
+    #load_model_data
 
     # Storyboard instance
     storyboard = UIStoryboard.storyboardWithName("Storyboard", bundle: nil)
@@ -11,23 +14,5 @@ class AppDelegate
     @window.makeKeyAndVisible
 
     true
-  end
-
-  def applicationDidEnterBackground(application)
-    write_model_data
-  end
-
-  def write_model_data
-    projects.each { |project, file| project.serialize_to_file file }
-  end
-
-  def load_model_data
-    projects.each { |project, file| project.deserialize_from_file file }
-  end
-
-  private
-
-  def projects
-    { Project => "projects.dat", Branch => "branches.dat", Token => "tokens.dat" }
   end
 end

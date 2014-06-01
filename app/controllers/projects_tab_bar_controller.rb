@@ -23,21 +23,20 @@ class ProjectsTabBarController < UITabBarController
   end
 
   def view_title
-    Project.any_favorite? ? 'Favorites' : 'All Projects'
+    ProjectOld.any_favorite? ? 'Favorites' : 'All Projects'
   end
 
   def set_badge_count
-    self.viewControllers[0].tabBarItem.setBadgeValue project_counter(:all)
-    self.viewControllers[1].tabBarItem.setBadgeValue project_counter(:favorites)
+    self.viewControllers[0].tabBarItem.setBadgeValue Project.count.to_s
+
+    if Project.favorites.any?
+      self.viewControllers[1].tabBarItem.setBadgeValue Project.favorites.count.to_s
+    else
+      self.viewControllers[1].tabBarItem.setBadgeValue nil
+    end
   end
 
   private
-
-  def project_counter(method)
-    result = Project.send method
-
-    result.count > 0 ? result.count.to_s : nil
-  end
 
   def handle_token_button
     alert = BW::UIAlertView.new({ title: 'Do you want to change the token?',

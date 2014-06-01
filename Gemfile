@@ -5,6 +5,7 @@ gem "bubble-wrap", "~> 1.4.0", require: ["bubble-wrap", "bubble-wrap/ui", "bubbl
 gem 'motion-cocoapods', '~> 1.4.1'
 gem 'afmotion', '~> 2.1.4'
 gem 'motion_model', '~> 0.5.3'
+gem 'cdq', '~> 0.1.8'
 
 # TODO: Comment these out before sending the app to Apple
 gem 'ib', '~> 0.4.7'

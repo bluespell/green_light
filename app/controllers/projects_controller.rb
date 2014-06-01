@@ -7,7 +7,7 @@ class ProjectsController < UITableViewController
   attr_accessor :projects, :selected_project
 
   def viewDidLoad
-    @projects = Project.ordered_by_last_build
+    @projects = Project.sort_by(:last_build_cache, order: :descending)
     self.refreshControl.addTarget self, action: :refresh_projects, forControlEvents: UIControlEventValueChanged
   end
 
@@ -42,19 +42,19 @@ class ProjectsController < UITableViewController
   end
 
   def refresh_projects
-    Semaphore.projects(Token.value) do |response|
+    # Semaphore.projects(Token.value) do |response|
+    #
+    #   if response.success?
+    #     # FIXME should update only the project branches -- the way it is now, we lost the favorite projects
+    #     ProjectsBuilder.build! response.object
+    #     @projects = ProjectOld.ordered_by_last_build
+    #     Dispatch::Queue.main.async { projects_table_view.reloadData }
+    #
+    #   elsif response.failure?
+    #     App.alert("Could not refresh projects")
+    #   end
+    # end
 
-      if response.success?
-        # FIXME should update only the project branches -- the way it is now, we lost the favorite projects
-        ProjectsBuilder.build! response.object
-        @projects = Project.ordered_by_last_build
-        Dispatch::Queue.main.async { projects_table_view.reloadData }
-
-        self.refreshControl.endRefreshing
-
-      elsif response.failure?
-        App.alert("Could not refresh projects")
-      end
-    end
+    self.refreshControl.endRefreshing
   end
 end

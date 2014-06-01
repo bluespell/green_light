@@ -1,30 +1,40 @@
 class ProjectsBuilder
   extend TimeHelper
 
-  def self.build!(projects)
-    Project.destroy_all
+  # FIXME: Why can't I invoke cdq.save directly from this class?
+  # (without passing it in as an attribute)
+  def self.build!(response, cdq)
 
-    projects.each do |raw_project|
-      project = Project.create({
-        :semaphore_id => raw_project["id"],
-        :name => raw_project["name"],
-        :hash_id => raw_project["hash_id"]
-      })
+    # FIXME: Could not find a call to destroy all instances of an entity at once
+    # Could this be a private method?
+    Project.all.array.each do |project|
+      project.destroy
+    end
 
+    response.each do |raw_project|
+      project = Project.create(
+        name:         raw_project["name"],
+        hash_id:      raw_project["hash_id"],
+        semaphore_id: raw_project["id"].to_s
+      )
+
+      raw_branches = Array.new
       raw_project["branches"].each do |branch|
-        branch = project.branches.create({
-          :name          => branch["branch_name"],
-          :result        => branch["result"],
-          :project_name  => branch["project_name"],
-          :started_at    => branch["started_at"],
-          :finished_at   => branch["finished_at"],
-          :building_date => time_from_string(branch["finished_at"])
-        })
+        raw_branches << Branch.create(
+          name:          branch["branch_name"],
+          result:        branch["result"],
+          started_at:    time_from_string(branch["started_at"]),
+          finished_at:   time_from_string(branch["finished_at"]),
+          building_date: time_from_string(branch["finished_at"])
+        )
       end
 
-      project.save
+      project.branches = NSSet.setWithArray raw_branches
 
-      App.shared.delegate.write_model_data
+      # Get this from the master branch
+      project.last_build_cache = project.last_build
     end
+
+    cdq.save
   end
 end

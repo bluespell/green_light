@@ -17,6 +17,8 @@ Motion::Project::App.setup do |app|
   # iOS 7 > 75% adoption (January, 2014)
   app.sdk_version = '7.1'
   app.deployment_target = '7.0'
+  
+  app.frameworks += [ 'CoreData' ]
 
   app.pods do
     dependency 'SVProgressHUD', '~> 1.0'

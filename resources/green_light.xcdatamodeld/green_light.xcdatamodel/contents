@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Branch" representedClassName="Branch" syncable="YES">
+        <attribute name="building_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="finished_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="started_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="branches" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="hash_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last_build_cache" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semaphore_id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="branches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Branch" inverseName="project" inverseEntity="Branch" syncable="YES"/>
+    </entity>
+    <entity name="Token" syncable="YES">
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Branch" positionX="-236" positionY="71" width="128" height="133"/>
+        <element name="Project" positionX="-522" positionY="-106" width="128" height="133"/>
+        <element name="Token" positionX="-308" positionY="-157" width="128" height="58"/>
+    </elements>
+</model>

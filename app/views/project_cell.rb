@@ -29,7 +29,17 @@ class ProjectCell < UITableViewCell
 
   # Handles the interaction with the favorite button
   def handle_favorite
-    @project.toggle_favorite
+    #FIXME: toggle_favorite is not working
+    #@project.toggle_favorite
+
+    if @project.favorite == 1
+      @project.favorite = 0
+    else
+      @project.favorite = 1
+    end
+
+    cdq.save
+
     configure_favorite_button
 
     # superview = UITableViewWrapperView
@@ -54,7 +64,7 @@ class ProjectCell < UITableViewCell
   end
 
   def favorite_image
-    @project.favorite ? 'star-40-green' : 'star-40'
+    @project.favorite == 1 ? 'star-40-green' : 'star-40'
   end
 
   def cell_color

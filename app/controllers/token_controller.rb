@@ -4,7 +4,7 @@ class TokenController < UIViewController
   outlet :token_field, UITextField
 
   def viewDidLoad
-    token_field.text = Token.value
+    token_field.text = Token.first.value unless Token.count == 0
     token_field.delegate = self
 
     performSegueWithIdentifier("push_projects", sender: nil) unless token_field.text.empty?
@@ -25,8 +25,9 @@ class TokenController < UIViewController
     # TODO: refactoring: single class to handle API calls
     Semaphore.projects(token_field.text) do |response|
       if response.success?
-        Token.create(:value => token_field.text)
-        ProjectsBuilder.build! response.object
+        update_token
+
+        ProjectsBuilder.build! response.object, cdq
 
         SVProgressHUD.showSuccessWithStatus "Success"
 
@@ -38,7 +39,20 @@ class TokenController < UIViewController
     end
   end
 
+  private
+
   def open_token_instructions
     UIApplication.sharedApplication.openURL NSURL.URLWithString 'https://semaphoreapp.com/docs/api_authentication.html'
+  end
+
+  def update_token
+    if (Token.count == 0)
+      Token.create(value: token_field.text)
+
+    else
+      Token.first.value = token_field.text
+    end
+
+    cdq.save
   end
 end
