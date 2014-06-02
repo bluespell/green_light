@@ -43,12 +43,13 @@ class ProjectsTabBarController < UITabBarController
                                   message: '(Current projects will be replaced)',
                                   buttons: ['Cancel', 'OK'],
                                   cancel_button_index: 0 }) do |a|
-      pops_view unless a.clicked_button.cancel?
+      clean_projects unless a.clicked_button.cancel?
     end
     alert.show
   end
 
-  def pops_view
+  def clean_projects
+    Project.destroy_all
     self.navigationController.popViewControllerAnimated(true)
   end
 end

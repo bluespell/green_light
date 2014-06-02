@@ -6,8 +6,10 @@ class TokenController < UIViewController
   def viewDidLoad
     token_field.text = Token.first.value unless Token.count == 0
     token_field.delegate = self
+  end
 
-    performSegueWithIdentifier("push_projects", sender: nil) unless token_field.text.empty?
+  def viewDidAppear(animation)
+    performSegueWithIdentifier("push_projects", sender: nil) if Project.count > 0
   end
 
   def textFieldShouldReturn(textField)

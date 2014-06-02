@@ -4,12 +4,7 @@ class ProjectsBuilder
   # FIXME: Why can't I invoke cdq.save directly from this class?
   # (without passing it in as an attribute)
   def self.build!(response, cdq)
-
-    # FIXME: Could not find a call to destroy all instances of an entity at once
-    # Could this be a private method?
-    Project.all.array.each do |project|
-      project.destroy
-    end
+    Project.destroy_all
 
     response.each do |raw_project|
       project = Project.create(

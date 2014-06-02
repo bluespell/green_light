@@ -34,4 +34,13 @@ class Project < CDQManagedObject
   def self.any_favorite?
     favorites.count > 0
   end
+
+  def self.destroy_all
+    # FIXME: Could not find a call to destroy all instances of an entity at once
+    all.array.each do |project|
+      project.destroy
+    end
+
+    cdq.save
+  end
 end
