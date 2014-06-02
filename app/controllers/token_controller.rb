@@ -32,6 +32,7 @@ class TokenController < UIViewController
         SVProgressHUD.showSuccessWithStatus "Success"
 
         performSegueWithIdentifier("push_projects", sender: sender)
+
       elsif response.failure?
         SVProgressHUD.dismiss
         App.alert("Could not validate the token")

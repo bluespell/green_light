@@ -23,7 +23,7 @@ class ProjectsTabBarController < UITabBarController
   end
 
   def view_title
-    ProjectOld.any_favorite? ? 'Favorites' : 'All Projects'
+    Project.any_favorite? ? 'Favorites' : 'All Projects'
   end
 
   def set_badge_count

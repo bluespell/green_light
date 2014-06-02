@@ -3,7 +3,6 @@ class AppDelegate
 
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     cdq.setup
-    #load_model_data
 
     # Storyboard instance
     storyboard = UIStoryboard.storyboardWithName("Storyboard", bundle: nil)
