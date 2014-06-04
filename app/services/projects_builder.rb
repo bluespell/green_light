@@ -10,7 +10,8 @@ class ProjectsBuilder
       project = Project.create(
         name:         raw_project["name"],
         hash_id:      raw_project["hash_id"],
-        semaphore_id: raw_project["id"].to_s
+        semaphore_id: raw_project["id"].to_s,
+        favorite:     false
       )
 
       raw_branches = Array.new

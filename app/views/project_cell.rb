@@ -29,16 +29,7 @@ class ProjectCell < UITableViewCell
 
   # Handles the interaction with the favorite button
   def handle_favorite
-    #FIXME: toggle_favorite is not working
-    #@project.toggle_favorite
-
-    if @project.favorite == 1
-      @project.favorite = 0
-    else
-      @project.favorite = 1
-    end
-
-    cdq.save
+    @project.toggle_favorite
 
     configure_favorite_button
 

@@ -1,6 +1,16 @@
 class Project < CDQManagedObject
 
-  scope :favorites, where(:favorite).eq(1).sort_by(:last_build_cache, order: :descending)
+  scope :favorites, where(:favorite).eq(true).sort_by(:last_build_cache, order: :descending)
+
+  def self.any_favorite?
+    where(:favorite).eq(true).count > 0
+  end
+
+  def self.destroy_all
+    all.each { |project| project.destroy }
+
+    cdq.save
+  end
 
   def status
     master_branch.result
@@ -26,21 +36,13 @@ class Project < CDQManagedObject
     branches.sort_by(:finished_at, order: :descending)
   end
 
-  #FIXME: toggle_favorite is not working
   def toggle_favorite
-    favorite = 1
-  end
-
-  def self.any_favorite?
-    favorites.count > 0
-  end
-
-  def self.destroy_all
-    # FIXME: Could not find a call to destroy all instances of an entity at once
-    all.array.each do |project|
-      project.destroy
-    end
+    setValue !favorite_to_bool, forKey: :favorite
 
     cdq.save
+  end
+
+  def favorite_to_bool
+    favorite == 1 ? true : false
   end
 end
