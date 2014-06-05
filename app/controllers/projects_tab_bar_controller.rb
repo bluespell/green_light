@@ -49,7 +49,7 @@ class ProjectsTabBarController < UITabBarController
   end
 
   def clean_projects
-    Project.destroy_all
+    Project.destroy_all!
     self.navigationController.popViewControllerAnimated(true)
   end
 end

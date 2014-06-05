@@ -4,7 +4,8 @@ class ProjectsBuilder
   # FIXME: Why can't I invoke cdq.save directly from this class?
   # (without passing it in as an attribute)
   def self.build!(response, cdq)
-    Project.destroy_all
+    Project.destroy_all!
+    Branch.destroy_all!
 
     response.each do |raw_project|
       project = Project.create(

@@ -6,7 +6,7 @@ class Project < CDQManagedObject
     where(:favorite).eq(true).count > 0
   end
 
-  def self.destroy_all
+  def self.destroy_all!
     all.each { |project| project.destroy }
 
     cdq.save
