@@ -42,19 +42,8 @@ class ProjectsController < UITableViewController
   end
 
   def refresh_projects
-    # Semaphore.projects(Token.value) do |response|
-    #
-    #   if response.success?
-    #     # FIXME should update only the project branches -- the way it is now, we lost the favorite projects
-    #     ProjectsBuilder.build! response.object
-    #     @projects = ProjectOld.ordered_by_last_build
-    #     Dispatch::Queue.main.async { projects_table_view.reloadData }
-    #
-    #   elsif response.failure?
-    #     App.alert("Could not refresh projects")
-    #   end
-    # end
-
-    self.refreshControl.endRefreshing
+    ProjectUpdater.update!(cdq, { :success => lambda { Dispatch::Queue.main.async { projects_table_view.reloadData } },
+                                  :failure => lambda { App.alert("Could not refresh projects") },
+                                  :done    => lambda { refreshControl.endRefreshing } })
   end
 end
