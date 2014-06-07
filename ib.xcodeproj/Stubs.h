@@ -2,6 +2,7 @@
 // Run `rake ib:open` to refresh
 
 #import <CFNetwork/CFNetwork.h>
+#import <CoreData/CoreData.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <Foundation/Foundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -9,16 +10,12 @@
 #import <Security/Security.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface Semaphore: NSObject
 @end
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
--(IBAction) applicationDidEnterBackground:(id) application;
--(IBAction) write_model_data;
--(IBAction) load_model_data;
--(IBAction) projects;
-
 @end
 
 @interface FavoriteProjectsController: UITableViewController
@@ -60,9 +57,8 @@
 -(IBAction) back:(id) sender;
 -(IBAction) view_title;
 -(IBAction) set_badge_count;
--(IBAction) project_counter:(id) method;
 -(IBAction) handle_token_button;
--(IBAction) pops_view;
+-(IBAction) clean_projects;
 
 @end
 
@@ -74,33 +70,32 @@
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) login:(id) sender;
 -(IBAction) open_token_instructions;
+-(IBAction) update_token;
 
 @end
 
-@interface Branch: NSObject
--(IBAction) started_at;
--(IBAction) finished_at;
--(IBAction) brothers;
+@interface Branch: CDQManagedObject
 -(IBAction) human_building_date;
--(IBAction) finished_at_or_now;
+-(IBAction) brothers;
 
 @end
 
-@interface Project: NSObject
--(IBAction) before_save:(id) sender;
--(IBAction) ordered_branches;
--(IBAction) master_branch;
+@interface Project: CDQManagedObject
 -(IBAction) status;
 -(IBAction) last_build;
+-(IBAction) master_branch;
 -(IBAction) passed_branches;
 -(IBAction) failed_branches;
--(IBAction) last_build_or_now;
+-(IBAction) ordered_branches;
 -(IBAction) toggle_favorite;
--(IBAction) select_branch:(id) name;
+-(IBAction) favorite_to_bool;
 
 @end
 
-@interface Token: NSObject
+@interface Token: CDQManagedObject
+@end
+
+@interface ProjectUpdater: NSObject
 @end
 
 @interface ProjectsBuilder: NSObject

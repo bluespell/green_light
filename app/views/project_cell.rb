@@ -55,7 +55,7 @@ class ProjectCell < UITableViewCell
   end
 
   def favorite_image
-    @project.favorite == 1 ? 'star-40-green' : 'star-40'
+    @project.favorite == 1 ? 'star_green' : 'star'
   end
 
   def cell_color

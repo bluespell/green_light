@@ -181,10 +181,14 @@
                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jsj-zy-F76">
+                                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jsj-zy-F76">
                                             <rect key="frame" x="10" y="10" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="star-40.png">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="cim-6d-rT5"/>
+                                                <constraint firstAttribute="height" constant="40" id="r8D-Nf-Ocw"/>
+                                            </constraints>
+                                            <state key="normal" image="star.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -193,12 +197,13 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="96B-E9-sSB" firstAttribute="leading" secondItem="ueX-Wi-ZSI" secondAttribute="leading" id="6Ul-Ve-jq9"/>
-                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="leading" secondItem="dgl-WX-m22" secondAttribute="leading" constant="10" id="BVQ-mZ-LqU"/>
-                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="top" secondItem="96B-E9-sSB" secondAttribute="top" id="JDD-CJ-Um5"/>
-                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="top" secondItem="dgl-WX-m22" secondAttribute="top" constant="10" id="ngt-MR-I6k"/>
-                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="leading" secondItem="Jsj-zy-F76" secondAttribute="trailing" constant="9" id="rVa-Un-qd9"/>
-                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="bottom" secondItem="ueX-Wi-ZSI" secondAttribute="bottom" id="skZ-y9-kwC"/>
+                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="leading" secondItem="dgl-WX-m22" secondAttribute="leading" constant="10" id="Ij2-7R-5yS"/>
+                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="top" secondItem="96B-E9-sSB" secondAttribute="bottom" constant="2" id="Oah-cA-KAI"/>
+                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="leading" secondItem="96B-E9-sSB" secondAttribute="leading" id="PTr-br-PLg"/>
+                                        <constraint firstItem="Jsj-zy-F76" firstAttribute="top" secondItem="dgl-WX-m22" secondAttribute="top" constant="10" id="WlR-f1-gze"/>
+                                        <constraint firstItem="96B-E9-sSB" firstAttribute="top" secondItem="Jsj-zy-F76" secondAttribute="top" id="X5T-2R-bog"/>
+                                        <constraint firstItem="96B-E9-sSB" firstAttribute="leading" secondItem="Jsj-zy-F76" secondAttribute="trailing" constant="9" id="ddL-dI-IjN"/>
+                                        <constraint firstItem="ueX-Wi-ZSI" firstAttribute="bottom" secondItem="Jsj-zy-F76" secondAttribute="bottom" id="ivt-Hy-reB"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="0.0" colorSpace="deviceRGB"/>
@@ -272,10 +277,14 @@
                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYM-hK-L7w">
+                                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYM-hK-L7w">
                                             <rect key="frame" x="10" y="10" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="star-40.png">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="64f-kR-gUI"/>
+                                                <constraint firstAttribute="width" constant="40" id="HFE-QC-eLT"/>
+                                            </constraints>
+                                            <state key="normal" image="star.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -284,12 +293,12 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="top" secondItem="NIP-VB-ePC" secondAttribute="top" id="10I-ca-Buu"/>
-                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="leading" secondItem="xpI-QP-iMj" secondAttribute="leading" id="86B-dy-wpV"/>
-                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="bottom" secondItem="xpI-QP-iMj" secondAttribute="bottom" id="Pus-hA-xLn"/>
-                                        <constraint firstItem="xpI-QP-iMj" firstAttribute="leading" secondItem="uYM-hK-L7w" secondAttribute="trailing" constant="9" id="V7n-Sf-u4Z"/>
-                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="top" secondItem="Go8-0L-Efd" secondAttribute="top" constant="10" id="ZEt-Ts-205"/>
-                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="leading" secondItem="Go8-0L-Efd" secondAttribute="leading" constant="10" id="gue-Xg-dgc"/>
+                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="leading" secondItem="uYM-hK-L7w" secondAttribute="trailing" constant="9" id="0IQ-ru-ZI3"/>
+                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="leading" secondItem="xpI-QP-iMj" secondAttribute="leading" id="7Vv-hm-tu0"/>
+                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="top" secondItem="Go8-0L-Efd" secondAttribute="top" constant="10" id="NVO-z1-8wG"/>
+                                        <constraint firstItem="NIP-VB-ePC" firstAttribute="top" secondItem="uYM-hK-L7w" secondAttribute="top" id="QPb-7m-8ru"/>
+                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="bottom" secondItem="xpI-QP-iMj" secondAttribute="bottom" id="TfV-gc-deQ"/>
+                                        <constraint firstItem="uYM-hK-L7w" firstAttribute="leading" secondItem="Go8-0L-Efd" secondAttribute="leading" constant="10" id="emK-H3-4X4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="0.0" colorSpace="deviceRGB"/>
@@ -658,7 +667,7 @@
     <resources>
         <image name="arrow-green.png" width="30" height="30"/>
         <image name="arrow-red.png" width="30" height="30"/>
-        <image name="star-40.png" width="40" height="40"/>
+        <image name="star.png" width="40" height="40"/>
     </resources>
     <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -667,6 +676,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Sft-zg-YLZ"/>
+        <segue reference="2we-Ce-JtI"/>
     </inferredMetricsTieBreakers>
 </document>

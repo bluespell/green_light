@@ -33,6 +33,9 @@
 @implementation Token
 @end
 
+@implementation ProjectUpdater
+@end
+
 @implementation ProjectsBuilder
 @end
 
