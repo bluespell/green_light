@@ -31,13 +31,16 @@
 
 @end
 
-@interface ProjectDetailsController: UIViewController
+@interface ProjectDetailsController: UITableViewController
 
 @property IBOutlet UIView * header;
+@property IBOutlet UIBarButtonItem * bar_button;
+@property IBOutlet UITableView * project_details_table_view;
 
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) back:(id) sender;
 -(IBAction) setup_header;
+-(IBAction) refresh_projects;
 
 @end
 

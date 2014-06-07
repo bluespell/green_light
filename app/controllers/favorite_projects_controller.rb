@@ -43,6 +43,7 @@ class FavoriteProjectsController < UITableViewController
   # Set the tapped (selected) project in the destination controller
   def prepareForSegue(segue, sender: sender)
     segue.destinationViewController.project = @selected_project
+    segue.destinationViewController.bar_button.title = navigationItem.title
   end
 
   private
@@ -50,6 +51,8 @@ class FavoriteProjectsController < UITableViewController
   def show_instructions
     App.alert("Favorite a project by tapping its star :)")
   end
+
+  private
 
   def refresh_projects
     ProjectUpdater.update!(cdq, { :success => lambda { Dispatch::Queue.main.async { favorites_table_view.reloadData } },
