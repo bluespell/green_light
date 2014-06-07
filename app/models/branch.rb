@@ -8,7 +8,7 @@ class Branch < CDQManagedObject
   end
 
   def human_building_date
-    return 'Building...' unless finished_at
+    return 'building...' unless finished_at
 
     finished_at.prettyTimestampSinceNow
   end
