@@ -37,6 +37,7 @@
 @property IBOutlet UIBarButtonItem * bar_button;
 @property IBOutlet UITableView * project_details_table_view;
 
+-(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) back:(id) sender;
 -(IBAction) setup_header;
