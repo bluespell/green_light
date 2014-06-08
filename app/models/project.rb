@@ -17,7 +17,7 @@ class Project < CDQManagedObject
   end
 
   def last_build
-    master_branch ? master_branch.finished_at : Time.new
+    (master_branch && master_branch.finished_at) || Time.new
   end
 
   def master_branch
