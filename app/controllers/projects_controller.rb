@@ -12,7 +12,7 @@ class ProjectsController < UITableViewController
   end
 
   def viewWillAppear(animated)
-    tabBarController.navigationItem.title = 'All Projects'
+    tabBarController.navigationItem.title = 'Projects'
   end
 
   def viewDidAppear(animated)
