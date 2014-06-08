@@ -2,13 +2,14 @@
 class ProjectDetailsController < UITableViewController
   extend IB
 
-  attr_accessor :project
+  attr_accessor :project, :semaphore_id
 
   outlet :header, UIView
   outlet :bar_button, UIBarButtonItem
   outlet :project_details_table_view, UITableView
 
   def viewDidLoad
+    self.semaphore_id = @project.semaphore_id
     self.refreshControl.addTarget self, action: :refresh_projects, forControlEvents: UIControlEventValueChanged
   end
 
@@ -51,7 +52,12 @@ class ProjectDetailsController < UITableViewController
   end
 
   def refresh_projects
-    ProjectUpdater.update!(cdq, { :success => lambda { Dispatch::Queue.main.async { project_details_table_view.reloadData } },
+    success_callback = Proc.new {
+      self.project = Project.where(:semaphore_id => semaphore_id).first
+      Dispatch::Queue.main.async { project_details_table_view.reloadData }
+    }
+
+    ProjectUpdater.update!(cdq, { :success => success_callback,
                                   :failure => lambda { App.alert("Could not refresh projects") },
                                   :done    => lambda { refreshControl.endRefreshing } })
   end
