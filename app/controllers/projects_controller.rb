@@ -8,7 +8,11 @@ class ProjectsController < UITableViewController
 
   def viewDidLoad
     @projects = Project.sort_by(:last_build_cache, order: :descending)
-    self.refreshControl.addTarget self, action: :refresh_projects, forControlEvents: UIControlEventValueChanged
+    RefreshControlHelper.configure(refreshControl, self, :refresh_projects)
+  end
+
+  def viewWillAppear(animated)
+    tabBarController.navigationItem.title = 'All Projects'
   end
 
   def viewDidAppear(animated)
@@ -45,8 +49,6 @@ class ProjectsController < UITableViewController
   private
 
   def refresh_projects
-    ProjectUpdater.update!(cdq, { :success => lambda { Dispatch::Queue.main.async { projects_table_view.reloadData } },
-                                  :failure => lambda { App.alert("Could not refresh projects") },
-                                  :done    => lambda { refreshControl.endRefreshing } })
+    RefreshControlHelper.trigger_refresh(refreshControl, cdq, tableView)
   end
 end

@@ -4,18 +4,18 @@ class FavoriteProjectsController < UITableViewController
   outlet :favorite_projects_button, UITabBarItem
   outlet :favorites_table_view, UITableView
 
-  attr_accessor :projects, :selected_project
-
-  def viewDidLoad
-    self.refreshControl.addTarget self, action: :refresh_projects, forControlEvents: UIControlEventValueChanged
-  end
+  attr_accessor :projects, :selected_project, :last_update
 
   def viewWillAppear(animated)
     @projects = Project.favorites
   end
 
   def viewDidAppear(animated)
-    show_instructions if @projects.count == 0
+    if @projects.count == 0
+      show_instructions
+    else
+      RefreshControlHelper.configure(refreshControl, self, :refresh_projects)
+    end
 
     # Grand Central Dispatch (updates favorite projects)
     Dispatch::Queue.main.async { favorites_table_view.reloadData }
@@ -49,14 +49,17 @@ class FavoriteProjectsController < UITableViewController
   private
 
   def show_instructions
-    App.alert("Favorite a project by tapping its star :)")
+    alert = BW::UIAlertView.new({ title: 'Favorite a project by tapping its star :)',
+                                  buttons: ['OK'],
+                                }) { select_projects_tab }
+    alert.show
   end
 
-  private
+  def select_projects_tab
+    tabBarController.setSelectedIndex(0)
+  end
 
   def refresh_projects
-    ProjectUpdater.update!(cdq, { :success => lambda { Dispatch::Queue.main.async { favorites_table_view.reloadData } },
-                                  :failure => lambda { App.alert("Could not refresh projects") },
-                                  :done    => lambda { refreshControl.endRefreshing } })
+     RefreshControlHelper.trigger_refresh(refreshControl, cdq, tableView)
   end
 end

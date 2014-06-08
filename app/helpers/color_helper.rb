@@ -15,6 +15,11 @@ module ColorHelper
     stopped_failed_colors
   end
 
+  def self.refresh_control_color
+    #UIColor.colorWithRed(222/255, green:223/255, blue:205/255, alpha:0.5) #DEDFCD
+    UIColor.colorWithRed(74/255, green:74/255, blue:74/255, alpha:0.5) #4A4A4A
+  end
+
   private
 
   # Stopped and Failed are both same 'redish' colors

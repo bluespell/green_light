@@ -24,6 +24,9 @@
 @implementation TokenController
 @end
 
+@implementation RefreshControlHelper
+@end
+
 @implementation Branch
 @end
 

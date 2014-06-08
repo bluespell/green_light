@@ -78,6 +78,9 @@
 
 @end
 
+@interface RefreshControlHelper: NSObject
+@end
+
 @interface Branch: CDQManagedObject
 -(IBAction) human_building_date;
 -(IBAction) brothers;

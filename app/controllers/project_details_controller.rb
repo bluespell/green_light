@@ -10,7 +10,7 @@ class ProjectDetailsController < UITableViewController
 
   def viewDidLoad
     self.semaphore_id = @project.semaphore_id
-    self.refreshControl.addTarget self, action: :refresh_projects, forControlEvents: UIControlEventValueChanged
+    RefreshControlHelper.configure(refreshControl, self, :refresh_projects)
   end
 
   def viewWillAppear(animated)
@@ -52,6 +52,9 @@ class ProjectDetailsController < UITableViewController
   end
 
   def refresh_projects
+    # FIXME: use the same approach as the FavoriteProjectsController's refresh_projects method
+    refreshControl.attributedTitle = RefreshControlHelper.configure_message('Syncing...')
+
     success_callback = Proc.new {
       self.project = Project.where(:semaphore_id => semaphore_id).first
       Dispatch::Queue.main.async { project_details_table_view.reloadData }
@@ -59,6 +62,8 @@ class ProjectDetailsController < UITableViewController
 
     ProjectUpdater.update!(cdq, { :success => success_callback,
                                   :failure => lambda { App.alert("Could not refresh projects") },
-                                  :done    => lambda { refreshControl.endRefreshing } })
+                                  :done    => lambda {
+                                    refreshControl.attributedTitle = RefreshControlHelper.set_last_update
+                                    refreshControl.endRefreshing } })
   end
 end
