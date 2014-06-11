@@ -6,6 +6,8 @@ class FakeData
   end
 
   def object
+    sleep 3
+
     BW::JSON.parse @data
   end
 
