@@ -33,7 +33,15 @@ class Project < CDQManagedObject
   end
 
   def ordered_branches
-    branches.sort_by(:finished_at, order: :descending)
+    (not_finished_branches.to_a + finished_branches.to_a).flatten
+  end
+
+  def not_finished_branches
+    branches.where(:finished_at).eq(nil)
+  end
+
+  def finished_branches
+    branches.where(:finished_at).ne(nil).sort_by(:finished_at, order: :descending)
   end
 
   def toggle_favorite
