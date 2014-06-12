@@ -1,19 +1,13 @@
 class Semaphore
   API_URL = 'https://semaphoreapp.com/api/v1/'
   PROJECTS_URL = API_URL + 'projects.json'
+  DEMO_DATA_URL = 'http://bluespell.us/data.json'
 
   def self.projects(token, &block)
-    return mock_data(&block) if token == "demo"
+    url = token == "demo" ? DEMO_DATA_URL : PROJECTS_URL
 
-    AFMotion::JSON.get PROJECTS_URL, :auth_token => token do |response|
+    AFMotion::JSON.get url, :auth_token => token do |response|
       block.call response
     end
-  end
-
-  def self.mock_data(&block)
-    path = NSBundle.mainBundle.pathForResource("data", ofType:"json")
-    data = NSData.dataWithContentsOfFile(path)
-
-    App.run_after(3.0) { block.call FakeData.new(data) }
   end
 end
