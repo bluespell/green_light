@@ -18,9 +18,9 @@
         "build_info_url":"https://semaphoreapp.com/api/v1/projects/80dbe188-4096-4147-9ce6-4784ebb990d0/195745/builds/1?auth_token=SecretTokenHere",
         "build_log_url":"https://semaphoreapp.com/api/v1/projects/80dbe188-4096-4147-9ce6-4784ebb990d0/195745/builds/1/log?auth_token=SecretTokenHere",
         "build_number":1,
-        "result":"failed",
+        "result":"pending",
         "started_at":"2014-06-11T14:55:57Z",
-        "finished_at":"2014-06-11T16:02:23Z",
+        "finished_at": null,
         "commit":{
           "id":"73facf25dd7159c1e472867ee13c85b152b04f7e",
           "url":"https://github.com/bluespell/green_light/commit/73facf25dd7159c1e472867ee13c85b152b04f7e",
