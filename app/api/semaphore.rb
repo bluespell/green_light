@@ -14,6 +14,6 @@ class Semaphore
     path = NSBundle.mainBundle.pathForResource("data", ofType:"json")
     data = NSData.dataWithContentsOfFile(path)
 
-    block.call FakeData.new(data)
+    App.run_after(3.0) { block.call FakeData.new(data) }
   end
 end
