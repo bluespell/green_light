@@ -3,7 +3,7 @@ class Semaphore
   PROJECTS_URL = API_URL + 'projects.json'
 
   def self.projects(token, &block)
-    return mock_data(&block) if token == "secret"
+    return mock_data(&block) if token == "demo"
 
     AFMotion::JSON.get PROJECTS_URL, :auth_token => token do |response|
       block.call response
