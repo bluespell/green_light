@@ -25,3 +25,5 @@ vendor/Pods
 
 ib.xcodeproj/project.xcworkspace/
 ib.xcodeproj/xcuserdata/
+
+provisioning_profile/
