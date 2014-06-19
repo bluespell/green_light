@@ -1,5 +1,5 @@
 # Represents the details of a project, like its branches, last build, status, etc
-class ProjectDetailsController < UITableViewController
+class BranchesController < UITableViewController
   extend IB
 
   attr_accessor :project, :semaphore_id

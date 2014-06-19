@@ -222,7 +222,7 @@
                     <connections>
                         <outlet property="favorite_projects_button" destination="T45-8p-q2N" id="Eqa-iB-huN"/>
                         <outlet property="favorites_table_view" destination="o3y-1f-wZQ" id="ByY-Rl-mqs"/>
-                        <segue destination="4LF-oe-5lx" kind="push" identifier="push_project_details_from_fav" id="0li-4B-niK"/>
+                        <segue destination="4LF-oe-5lx" kind="push" identifier="push_branches_from_fav" id="0li-4B-niK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D23-9X-Wr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,10 +271,10 @@
             </objects>
             <point key="canvasLocation" x="351" y="434"/>
         </scene>
-        <!--Project Details Controller - Branches-->
+        <!--Branches Controller - Branches-->
         <scene sceneID="3mt-ZF-2Uk">
             <objects>
-                <tableViewController id="4LF-oe-5lx" customClass="ProjectDetailsController" sceneMemberID="viewController">
+                <tableViewController id="4LF-oe-5lx" customClass="BranchesController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="90" sectionFooterHeight="1" id="Xhh-sa-2wQ">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -410,7 +410,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOX-ao-eBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="JX6-8I-E5x" customClass="ProjectDetailsHeaderView">
+                <view contentMode="scaleToFill" id="JX6-8I-E5x" customClass="BranchesHeaderView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -666,7 +666,7 @@
                     <connections>
                         <outlet property="all_projects_button" destination="SZl-Bq-U9R" id="KIs-UF-NUx"/>
                         <outlet property="projects_table_view" destination="4ii-jc-EGE" id="avD-bK-Gc8"/>
-                        <segue destination="4LF-oe-5lx" kind="push" identifier="push_project_details_from_all" id="gHs-fM-uWK"/>
+                        <segue destination="4LF-oe-5lx" kind="push" identifier="push_branches_from_all" id="gHs-fM-uWK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B84-sQ-0xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -686,6 +686,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gHs-fM-uWK"/>
+        <segue reference="0li-4B-niK"/>
     </inferredMetricsTieBreakers>
 </document>

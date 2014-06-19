@@ -34,10 +34,10 @@ class FavoriteProjectsController < UITableViewController
     cell.configure @projects[indexPath.row]
   end
 
-  # Calls the ProjectDetailsController when a project is tapped (selected)
+  # Calls the BranchesController when a project is tapped (selected)
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
     @selected_project = @projects[indexPath.row]
-    performSegueWithIdentifier('push_project_details_from_fav', sender: nil)
+    performSegueWithIdentifier('push_branches_from_fav', sender: nil)
   end
 
   # Set the tapped (selected) project in the destination controller

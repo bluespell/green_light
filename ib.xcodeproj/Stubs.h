@@ -18,6 +18,20 @@
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 @end
 
+@interface BranchesController: UITableViewController
+
+@property IBOutlet UIView * header;
+@property IBOutlet UIBarButtonItem * bar_button;
+@property IBOutlet UITableView * project_details_table_view;
+
+-(IBAction) viewDidLoad;
+-(IBAction) viewWillAppear:(id) animated;
+-(IBAction) back:(id) sender;
+-(IBAction) setup_header;
+-(IBAction) refresh_projects;
+
+@end
+
 @interface BuildsController: UITableViewController
 -(IBAction) back:(id) sender;
 
@@ -32,20 +46,6 @@
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) show_instructions;
 -(IBAction) select_projects_tab;
--(IBAction) refresh_projects;
-
-@end
-
-@interface ProjectDetailsController: UITableViewController
-
-@property IBOutlet UIView * header;
-@property IBOutlet UIBarButtonItem * bar_button;
-@property IBOutlet UITableView * project_details_table_view;
-
--(IBAction) viewDidLoad;
--(IBAction) viewWillAppear:(id) animated;
--(IBAction) back:(id) sender;
--(IBAction) setup_header;
 -(IBAction) refresh_projects;
 
 @end
@@ -129,6 +129,20 @@
 
 @end
 
+@interface BranchesHeaderView: UIView
+
+@property IBOutlet UILabel * project_name;
+@property IBOutlet UILabel * last_build;
+@property IBOutlet UILabel * project_status;
+@property IBOutlet UILabel * number_of_branches;
+@property IBOutlet UILabel * number_of_branches_failed;
+@property IBOutlet UILabel * number_of_branches_passed;
+@property IBOutlet UIView * project_status_background;
+
+-(IBAction) configure:(id) project;
+
+@end
+
 @interface ProjectCell: UITableViewCell
 
 @property IBOutlet UILabel * project_name;
@@ -141,20 +155,6 @@
 -(IBAction) configure_favorite_button;
 -(IBAction) favorite_image;
 -(IBAction) cell_color;
-
-@end
-
-@interface ProjectDetailsHeaderView: UIView
-
-@property IBOutlet UILabel * project_name;
-@property IBOutlet UILabel * last_build;
-@property IBOutlet UILabel * project_status;
-@property IBOutlet UILabel * number_of_branches;
-@property IBOutlet UILabel * number_of_branches_failed;
-@property IBOutlet UILabel * number_of_branches_passed;
-@property IBOutlet UIView * project_status_background;
-
--(IBAction) configure:(id) project;
 
 @end
 

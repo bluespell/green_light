@@ -9,13 +9,13 @@
 @implementation AppDelegate
 @end
 
+@implementation BranchesController
+@end
+
 @implementation BuildsController
 @end
 
 @implementation FavoriteProjectsController
-@end
-
-@implementation ProjectDetailsController
 @end
 
 @implementation ProjectsController
@@ -48,9 +48,9 @@
 @implementation BranchCell
 @end
 
-@implementation ProjectCell
+@implementation BranchesHeaderView
 @end
 
-@implementation ProjectDetailsHeaderView
+@implementation ProjectCell
 @end
 

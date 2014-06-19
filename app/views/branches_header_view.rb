@@ -1,4 +1,4 @@
-class ProjectDetailsHeaderView < UIView
+class BranchesHeaderView < UIView
   extend IB
   include ColorHelper, LayoutHelper
 
