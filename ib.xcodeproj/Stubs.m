@@ -51,6 +51,9 @@
 @implementation BranchesHeaderView
 @end
 
+@implementation BuildCell
+@end
+
 @implementation ProjectCell
 @end
 

@@ -23,8 +23,8 @@ class BranchesController < UITableViewController
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    reuse_identifier ||= 'branch_cell'
-    tableView.dequeueReusableCellWithIdentifier(reuse_identifier)
+    @reuse_identifier ||= 'branch_cell'
+    tableView.dequeueReusableCellWithIdentifier(@reuse_identifier)
   end
 
   def tableView(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)

@@ -33,7 +33,12 @@
 @end
 
 @interface BuildsController: UITableViewController
+
+@property IBOutlet UIView * header;
+
+-(IBAction) viewDidAppear:(id) animated;
 -(IBAction) back:(id) sender;
+-(IBAction) refresh_builds;
 
 @end
 
@@ -140,6 +145,11 @@
 @property IBOutlet UIView * project_status_background;
 
 -(IBAction) configure:(id) project;
+
+@end
+
+@interface BuildCell: UITableViewCell
+-(IBAction) confraigure:(id) build;
 
 @end
 
