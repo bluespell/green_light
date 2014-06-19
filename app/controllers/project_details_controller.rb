@@ -45,6 +45,10 @@ class ProjectDetailsController < UITableViewController
     0.01
   end
 
+  def tableView(tableView, didSelectRowAtIndexPath: indexPath)
+    performSegueWithIdentifier('push_builds_list', sender: nil)
+  end
+
   private
 
   def setup_header

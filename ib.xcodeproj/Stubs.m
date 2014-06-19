@@ -9,6 +9,9 @@
 @implementation AppDelegate
 @end
 
+@implementation BuildsController
+@end
+
 @implementation FavoriteProjectsController
 @end
 

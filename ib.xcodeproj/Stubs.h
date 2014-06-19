@@ -18,15 +18,20 @@
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 @end
 
+@interface BuildsController: UITableViewController
+-(IBAction) back:(id) sender;
+
+@end
+
 @interface FavoriteProjectsController: UITableViewController
 
 @property IBOutlet UITabBarItem * favorite_projects_button;
 @property IBOutlet UITableView * favorites_table_view;
 
--(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) show_instructions;
+-(IBAction) select_projects_tab;
 -(IBAction) refresh_projects;
 
 @end
@@ -51,6 +56,7 @@
 @property IBOutlet UITableView * projects_table_view;
 
 -(IBAction) viewDidLoad;
+-(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) refresh_projects;
 
@@ -94,6 +100,8 @@
 -(IBAction) passed_branches;
 -(IBAction) failed_branches;
 -(IBAction) ordered_branches;
+-(IBAction) not_finished_branches;
+-(IBAction) finished_branches;
 -(IBAction) toggle_favorite;
 -(IBAction) favorite_to_bool;
 
