@@ -12,6 +12,10 @@ class BuildsController < UITableViewController
     15
   end
 
+  def tableView(tableView, heightForHeaderInSection: section)
+    60
+  end
+
   def tableView(tableView, viewForHeaderInSection: section)
     return header
   end

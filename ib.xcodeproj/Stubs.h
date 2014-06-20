@@ -149,7 +149,7 @@
 @end
 
 @interface BuildCell: UITableViewCell
--(IBAction) confraigure:(id) build;
+-(IBAction) configure:(id) build;
 
 @end
 
