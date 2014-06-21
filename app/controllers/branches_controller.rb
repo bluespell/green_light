@@ -23,12 +23,13 @@ class BranchesController < UITableViewController
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    @reuse_identifier ||= 'branch_cell'
-    tableView.dequeueReusableCellWithIdentifier(@reuse_identifier)
-  end
+    cell_id = 'branch_cell'
+    branch  = @project.ordered_branches[indexPath.row]
 
-  def tableView(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)
-    branch = @project.ordered_branches[indexPath.row]
+    cell = tableView.dequeueReusableCellWithIdentifier(cell_id) || begin
+      BranchCell.alloc.init
+    end
+
     cell.configure branch, indexPath.row
   end
 
