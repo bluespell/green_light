@@ -26,8 +26,7 @@ class ProjectsController < UITableViewController
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    @reuse_identifier ||= 'project_cell'
-    tableView.dequeueReusableCellWithIdentifier(@reuse_identifier)
+    tableView.dequeueReusableCellWithIdentifier('project_cell', forIndexPath: indexPath)
   end
 
   def tableView(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)
