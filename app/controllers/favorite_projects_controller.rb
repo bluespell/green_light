@@ -1,28 +1,37 @@
 class FavoriteProjectsController < UITableViewController
   extend IB
+  include NsFetchedResultsHelper
 
   outlet :favorite_projects_button, UITabBarItem
   outlet :favorites_table_view, UITableView
 
   attr_accessor :projects, :selected_project, :last_update
 
-  def viewWillAppear(animated)
-    @projects = Project.favorites
+  def collection
+    @projects ||= Project.favorites
+  end
+
+  def viewDidLoad
+    super
+
+    setupNSFetchedResultsController
+    RefreshControlHelper.configure(refreshControl, self, :refresh_projects)
+  end
+
+  def viewDidUnload
+    super
+    clearNSFetchedResultsController
   end
 
   def viewDidAppear(animated)
-    if @projects.count == 0
-      show_instructions
-    else
-      RefreshControlHelper.configure(refreshControl, self, :refresh_projects)
-    end
+    show_instructions if collection.count == 0
 
     # Grand Central Dispatch (updates favorite projects)
     Dispatch::Queue.main.async { favorites_table_view.reloadData }
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
-    @projects.count
+    fetch_controller.sections[section].numberOfObjects
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
@@ -30,12 +39,12 @@ class FavoriteProjectsController < UITableViewController
   end
 
   def tableView(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)
-    cell.configure @projects[indexPath.row]
+    cell.configure fetch_controller.objectAtIndexPath(indexPath)
   end
 
   # Calls the BranchesController when a project is tapped (selected)
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
-    @selected_project = @projects[indexPath.row]
+    @selected_project = fetch_controller.objectAtIndexPath(indexPath)
     performSegueWithIdentifier('push_branches_from_fav', sender: nil)
   end
 
