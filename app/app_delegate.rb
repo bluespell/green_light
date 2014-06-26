@@ -1,8 +1,6 @@
 class AppDelegate
-  include CDQ
-
   def application(application, didFinishLaunchingWithOptions:launchOptions)
-    cdq.setup
+    RemoteManager.setup
 
     # Storyboard instance
     storyboard = UIStoryboard.storyboardWithName("Storyboard", bundle: nil)
