@@ -18,7 +18,7 @@ Motion::Project::App.setup do |app|
   # iOS 7 > 75% adoption (January, 2014)
   app.sdk_version = '7.1'
   app.deployment_target = '7.0'
-  
+
   app.frameworks += [ 'CoreData' ]
 
   app.icons = ["AppIcon29x29.png", "AppIcon29x29@2x.png", "AppIcon40x40.png", "AppIcon40x40@2x.png", "AppIcon50x50.png", "AppIcon50x50@2x.png", "AppIcon57x57.png", "AppIcon57x57@2x.png", "AppIcon60x60.png", "AppIcon60x60@2x.png", "AppIcon72x72.png", "AppIcon72x72@2x.png", "AppIcon76x76.png", "AppIcon76x76@2x.png"]
@@ -32,6 +32,7 @@ Motion::Project::App.setup do |app|
     dependency 'YIInnerShadowView', '~> 1.0.1'
     dependency 'GBDeviceInfo', '~> 2.2.6'
     dependency 'PrettyTimestamp', '~> 1.1'
+    dependency 'RestKit', '~> 0.23.1'
   end
 
   app.installrapp do
