@@ -18,24 +18,9 @@ class TokenController < UIViewController
 
     token_field.resignFirstResponder
 
-    SVProgressHUD.appearance.setHudBackgroundColor("F2F2E9".to_color)
-    SVProgressHUD.showWithStatus("Loading", maskType:SVProgressHUDMaskTypeGradient)
-
-    # TODO: refactoring: single class to handle API calls
-    Semaphore.projects(token_field.text) do |response|
-      if response.success?
-        update_token
-
-        ProjectsBuilder.build! response.object, cdq
-
-        SVProgressHUD.showSuccessWithStatus "Success"
-
-        performSegueWithIdentifier("push_projects", sender: sender)
-
-      elsif response.failure?
-        SVProgressHUD.dismiss
-        App.alert("Could not validate the token")
-      end
+    AuthenticationCommand.run(token_field.text) do
+      update_token
+      performSegueWithIdentifier("push_projects", sender: sender)
     end
   end
 
@@ -48,7 +33,6 @@ class TokenController < UIViewController
   def update_token
     if (Token.count == 0)
       Token.create(value: token_field.text)
-
     else
       Token.first.value = token_field.text
     end
