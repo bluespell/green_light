@@ -3,8 +3,6 @@ class RemoteManager
     include CDQ
 
     def setup
-      cdq.setup
-
       RKObjectManager.sharedManager = manager
     end
 
