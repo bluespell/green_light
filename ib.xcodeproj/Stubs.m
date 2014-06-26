@@ -9,6 +9,12 @@
 @implementation AppDelegate
 @end
 
+@implementation AuthenticationCommand
+@end
+
+@implementation RefreshProjectsCommand
+@end
+
 @implementation BranchesController
 @end
 
@@ -30,6 +36,9 @@
 @implementation RefreshControlHelper
 @end
 
+@implementation RemoteManager
+@end
+
 @implementation Branch
 @end
 
@@ -37,12 +46,6 @@
 @end
 
 @implementation Token
-@end
-
-@implementation ProjectUpdater
-@end
-
-@implementation ProjectsBuilder
 @end
 
 @implementation BranchCell

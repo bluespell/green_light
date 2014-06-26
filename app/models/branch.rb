@@ -1,6 +1,4 @@
 class Branch < CDQManagedObject
-  include TimeHelper
-
   def self.destroy_all!
     all.each { |b| b.destroy }
 

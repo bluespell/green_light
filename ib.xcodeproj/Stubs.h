@@ -5,17 +5,22 @@
 #import <CoreData/CoreData.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <Foundation/Foundation.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import <Security/Security.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
 
 @interface Semaphore: NSObject
 @end
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
+@end
+
+@interface AuthenticationCommand: NSObject
+@end
+
+@interface RefreshProjectsCommand: NSObject
 @end
 
 @interface BranchesController: UITableViewController
@@ -47,7 +52,9 @@
 @property IBOutlet UITabBarItem * favorite_projects_button;
 @property IBOutlet UITableView * favorites_table_view;
 
--(IBAction) viewWillAppear:(id) animated;
+-(IBAction) collection;
+-(IBAction) viewDidLoad;
+-(IBAction) viewDidUnload;
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) show_instructions;
 -(IBAction) select_projects_tab;
@@ -60,7 +67,9 @@
 @property IBOutlet UITabBarItem * all_projects_button;
 @property IBOutlet UITableView * projects_table_view;
 
+-(IBAction) collection;
 -(IBAction) viewDidLoad;
+-(IBAction) viewDidUnload;
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) refresh_projects;
@@ -92,6 +101,18 @@
 @interface RefreshControlHelper: NSObject
 @end
 
+@interface RemoteManager: NSObject
+-(IBAction) setup;
+-(IBAction) object_manager;
+-(IBAction) manager;
+-(IBAction) store;
+-(IBAction) project_response_descriptor;
+-(IBAction) project_mapping;
+-(IBAction) relationship_mapping;
+-(IBAction) branch_mapping;
+
+@end
+
 @interface Branch: CDQManagedObject
 -(IBAction) human_building_date;
 -(IBAction) brothers;
@@ -113,12 +134,6 @@
 @end
 
 @interface Token: CDQManagedObject
-@end
-
-@interface ProjectUpdater: NSObject
-@end
-
-@interface ProjectsBuilder: NSObject
 @end
 
 @interface BranchCell: UITableViewCell
