@@ -68,6 +68,6 @@ class FavoriteProjectsController < UITableViewController
   end
 
   def refresh_projects
-     RefreshControlHelper.trigger_refresh(refreshControl, cdq, tableView)
+     RefreshControlHelper.trigger_refresh(refreshControl, tableView)
   end
 end

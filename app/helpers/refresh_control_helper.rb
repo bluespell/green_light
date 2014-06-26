@@ -17,14 +17,14 @@ class RefreshControlHelper
   end
 
   # Triggers the refresh and configure the given refresh control
-  def self.trigger_refresh(refreshControl, cdq, tableView)
+  def self.trigger_refresh(refreshControl, tableView)
     refreshControl.attributedTitle = configure_message('Syncing...')
 
-    ProjectUpdater.update!(cdq, { :success => lambda { Dispatch::Queue.main.async { tableView.reloadData } },
-                                  :failure => lambda { App.alert('Could not refresh projects') },
-                                  :done    => lambda {
-                                    refreshControl.attributedTitle = RefreshControlHelper.set_last_update
-                                    refreshControl.endRefreshing } } )
+    RefreshProjectsCommand.run(Token.value) do
+      refreshControl.attributedTitle = RefreshControlHelper.set_last_update
+      refreshControl.endRefreshing
+      tableView.reloadData
+    end
   end
 
   def self.set_last_update

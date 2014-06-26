@@ -55,18 +55,15 @@ class BranchesController < UITableViewController
   end
 
   def refresh_projects
-    # FIXME: use the same approach as the FavoriteProjectsController's refresh_projects method
     refreshControl.attributedTitle = RefreshControlHelper.configure_message('Syncing...')
 
-    success_callback = Proc.new {
+    # FIXME: we can refactor here to avoid duplication
+    # the only thing that is different from the other calls is the semaphore_id thing
+    RefreshProjectsCommand.run(Token.value) do
       self.project = Project.where(:semaphore_id => semaphore_id).first
-      Dispatch::Queue.main.async { project_details_table_view.reloadData }
-    }
-
-    ProjectUpdater.update!(cdq, { :success => success_callback,
-                                  :failure => lambda { App.alert("Could not refresh projects") },
-                                  :done    => lambda {
-                                    refreshControl.attributedTitle = RefreshControlHelper.set_last_update
-                                    refreshControl.endRefreshing } })
+      refreshControl.attributedTitle = RefreshControlHelper.set_last_update
+      refreshControl.endRefreshing
+      tableView.reloadData
+    end
   end
 end
